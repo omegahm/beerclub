@@ -30,6 +30,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'modernizr-rails'
 
+gem 'asset_sync'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
