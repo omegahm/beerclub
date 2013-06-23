@@ -1,0 +1,26 @@
+<%= form_for(@administrator_session) do |f| %>
+  <fieldset>
+    <legend><%= title -%></legend>    
+    <% if @administrator_session.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@administrator_session.errors.count, "error") %> prohibited this administrator_session from being saved:</h2>
+
+        <ul>
+        <% @administrator_session.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :username, 'Brugernavn' %><br>
+    <%= f.text_field :username %>
+    <br>
+
+    <%= f.label :password, 'Kodeord' %><br>
+    <%= f.password_field :password %>
+    <br>
+    
+    <%= f.submit title, class: 'btn btn-default' %>
+  </fieldset>
+<% end %>

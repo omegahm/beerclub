@@ -1,0 +1,32 @@
+<%= form_for(@administrator) do |f| %>
+  <fieldset>
+    <legend><%= title -%></legend>
+  
+    <% if @administrator.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@administrator.errors.count, "error") %> prohibited this administrator from being saved:</h2>
+
+        <ul>
+        <% @administrator.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :username, 'Brugernavn' %><br>
+    <%= f.text_field :username %>
+    <br>
+
+    <%= f.label :password, 'Kodeord' %><br>
+    <%= f.password_field :password %>
+    <br>
+
+    <%= f.label :password_confirmation, 'Gentag kodeord' %><br>
+    <%= f.password_field :password_confirmation %>
+    <br>
+
+    <%= f.submit 'Opret', class: 'btn btn-default' %>
+    <%= link_to 'Tilbage', administrators_path %>
+  </fieldset>
+<% end %>

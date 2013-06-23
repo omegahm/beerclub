@@ -1,4 +1,8 @@
 Beerclub::Application.routes.draw do
+  resources :administrators, :administrator_sessions
+  get 'login' => 'administrator_sessions#new', as: :login
+  get 'logout' => 'administrator_sessions#destroy', as: :logout
+  
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

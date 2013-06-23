@@ -28,8 +28,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'modernizr-rails'
-
 gem 'asset_sync'
 
 group :development do
@@ -61,3 +59,5 @@ gem 'rack-timeout'
 
 # Use unicorn as the app server
 gem 'unicorn'
+
+gem 'authlogic'

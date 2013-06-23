@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>Administratorer</h1>
+</div>
+
+<table class="table table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Brugernavn</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @administrators.each do |administrator| %>
+      <tr>
+        <td><%= administrator.username %></td>
+        <td class="text-right">
+          <i class="icon-edit"></i>
+          <%= link_to 'Rediger', edit_administrator_path(administrator) %>
+        </td>
+        <td class="text-right">
+          <i class="icon-remove"></i>
+          <%= link_to 'Slet', administrator, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ny administrator', new_administrator_path %>
