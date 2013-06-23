@@ -1,0 +1,13 @@
+common: &COMMON
+  adapter: postgresql
+  encoding: utf-8
+  pool: 5
+  username: beerclub
+
+development:
+  <<: *COMMON
+  database: beerclub_development
+
+test:
+  <<: *COMMON
+  database: beerclub_test
