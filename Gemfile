@@ -40,7 +40,6 @@ group :development do
   gem 'mailcatcher'
   gem 'pry'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler', require: 'rack-mini-profiler'
 end
 
 group :test do
@@ -50,6 +49,8 @@ group :test do
   gem 'capybara-webkit'
   gem 'fuubar'
 end
+
+gem 'rack-mini-profiler', require: 'rack-mini-profiler'
 
 gem 'thin'
 gem 'rack-timeout'
