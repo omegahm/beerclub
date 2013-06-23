@@ -51,6 +51,8 @@ group :test do
 end
 
 gem 'rack-mini-profiler', require: 'rack-mini-profiler'
+gem 'rails_12factor' # required by Heroku
+gem 'rails_serve_static_assets'
 
 gem 'thin'
 gem 'rack-timeout'
