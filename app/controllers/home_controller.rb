@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       end
     end
 
-    @sales_last_month = Bill.group("date_trunc('day', created_at)").order("date_trunc_day_created_at DESC").sum("price * quantity").first.second.to_f
+    @sales_last_month = Bill.group("date_trunc('day', created_at)").order("date_trunc_day_created_at DESC").sum("price * quantity").first.try(:second).try(:to_f)
     @last_month_meta = Metum.last_month
   end
 end
