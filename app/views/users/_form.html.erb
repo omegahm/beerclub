@@ -1,0 +1,34 @@
+<%= form_for(@user) do |f| %>
+  <fieldset>
+    <legend>
+      <h1><%= title -%></h1>
+    </legend>
+
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :name, 'Navn' %><br>
+    <%= f.text_field :name %>
+    <br>
+
+    <%= f.label :room, 'Værelse' %><br>
+    <%= f.text_field :room %>
+    <br>
+
+    <%= f.label :visible, 'Synlig' %>
+    <%= f.check_box :visible %>
+    <br>
+
+    <%= f.submit title, class: 'btn btn-default' %>
+    <%= link_to 'Tilbage', users_path %>
+  </fieldset>
+<% end %>

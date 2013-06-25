@@ -10,7 +10,9 @@
     <div class="nav-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active">
-          <%= link_to 'Hjem', root_path -%>
+          <%= link_to root_path do -%>
+            <i class="icon-home"></i> Hjem
+          <% end %>
         </li>
       </ul>
       <ul class="nav navbar-nav pull-right">
@@ -18,16 +20,55 @@
           <% if current_administrator %>
             <ul class="nav navbar-nav pull-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_administrator.username -%> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-unlock-alt"></i>
+                  <%= current_administrator.username -%> 
+                  <b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to 'Administratorer', administrators_path -%><li>
+                  <li>
+                    <%= link_to administrators_path do -%>
+                      <i class="icon-eye-open"></i> Administratorer
+                    <% end %>
+                  <li>
+                  <li>
+                    <%= link_to users_path do -%>
+                      <i class="icon-group"></i> Brugere
+                    <% end %>
+                  <li>
+                  
                   <li class="divider"></li>
-                  <li><%= link_to 'Log ud', logout_path -%></li>
+                  
+                  <li>
+                    <%= link_to products_path do -%>
+                      <i class="icon-glass"></i> Produkter
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to accounts_path do -%>
+                      <i class="icon-beer"></i> Regnskab
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to meta_path do -%>
+                      <i class="icon-cogs"></i> Meta
+                    <% end %>
+                  </li>
+                  
+                  <li class="divider"></li>
+                  
+                  <li>
+                    <%= link_to logout_path do -%>
+                      <i class="icon-power-off"></i> Log ud
+                    <% end %>
+                  </li>
                 </ul>
               </li>
             </ul>
           <% else %>
-            <%= link_to 'Log ind', login_path -%>
+            <%= link_to login_path do -%>
+              <i class="icon-lock"></i> Log ind
+            <% end %>
           <% end %>
         </li>
       </ul>

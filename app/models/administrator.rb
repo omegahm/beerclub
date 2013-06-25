@@ -1,10 +1,12 @@
 class Administrator < ActiveRecord::Base
-  acts_as_authentic
+  acts_as_authentic do |c|
+    c.login_field = :username
+  end
 end
 
 # == Schema Information
 #
-# Table name: administrator
+# Table name: administrators
 #
 #  id                :integer          not null, primary key
 #  username          :string(255)

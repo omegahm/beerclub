@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1><i class="icon-beer"></i> Regnskab</h1>
+</div>
+
+<% if params[:all] %>
+  <%= link_to 'Vis kun synlige', accounts_path(params.except(:all)), data: { confirm: 'Du mister alt data, du allerede har indtastet.\nEr du sikker på at du vil gå videre?' } %>
+<% else %>
+  <%= link_to 'Vis alle', accounts_path(all: true), data: { confirm: 'Du mister alt data, du allerede har indtastet. Er du sikker på at du vil gå videre?' } %>
+<% end %>
+<br><br>
+
+<%= form_tag update_accounts_path, :method => :patch do %>
+  <table class="table table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>Navn</th>
+        <th>Værelse</th>
+        <% @products.each do |product| %>
+          <th><%= product.name %></th>
+        <% end %>
+        <th>Indbetalt</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.room %></td>
+          <% @products.each do |product| %>
+            <%= fields_for "account[#{user.id}_#{product.id}][]", Bill.new do |f| %>
+              <td>
+                <%= f.text_field :quantity, class: 'input-small' -%>
+              </td>
+            <% end %>
+          <% end %>
+          <%= fields_for "account[#{user.id}_0][]", Payment.new do |f| %>
+            <td>
+              <%= f.text_field :amount, class: 'input-small' -%>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p class="pull-right">
+    <%= submit_tag 'Overfør regnskab', class: 'btn btn-default' %>
+  </p>
+
+<% end %>

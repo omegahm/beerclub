@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130623161427) do
+ActiveRecord::Schema.define(version: 20130625095019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,44 @@ ActiveRecord::Schema.define(version: 20130623161427) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
+  create_table "bills", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.float    "price"
+    t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "meta", force: true do |t|
+    t.float    "cash"
+    t.float    "loss"
+    t.float    "stock"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "user_id"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.boolean  "visible",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "room"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "visible",    default: true
   end
 
 end

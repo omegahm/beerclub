@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1><i class="icon-cogs"></i> Metadata</h1>
+</div>
+
+<table class="table table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Fra</th>
+      <th>Kontant</th>
+      <th>Svind</th>
+      <th>Ølbeholdning</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meta.each do |metum| %>
+      <tr>
+        <td><%= l metum.created_at %></td>
+        <td><%= number_to_currency metum.cash %></td>
+        <td><%= number_to_currency metum.loss %></td>
+        <td><%= number_to_currency metum.stock %></td>
+        <td class="text-right">
+          <i class="icon-edit"></i>
+          <%= link_to 'Rediger', edit_metum_path(metum) %>
+        </td>
+        <td class="text-right">
+          <i class="icon-remove"></i>
+          <%= link_to 'Slet', metum, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Opret metadata', new_metum_path %>

@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1><i class="icon-glass"></i> Produkter</h1>
+</div>
+
+<table class="table table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Navn</th>
+      <th>Nuværende pris</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= number_to_currency product.price %></td>
+        <td class="text-right">
+          <i class="icon-edit"></i>
+          <%= link_to 'Rediger', edit_product_path(product) %>
+        </td>
+        <td class="text-right">
+          <i class="icon-remove"></i>
+          <%= link_to 'Slet', product, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Opret nyt produkt', new_product_path %>

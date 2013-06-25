@@ -1,0 +1,44 @@
+<%= form_for(@product) do |f| %>
+  <fieldset>
+    <legend>
+      <h1><%= title -%></h1>
+    </legend>
+
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :name, 'Produktnavn' %><br>
+    <%= f.text_field :name %>
+    <br>
+
+    <%= f.label :price, 'Pris' %><br>
+    <div class="input-group">
+      <span class="input-group-addon">kr.</span>
+      <%= f.text_field :price %>
+    </div>
+
+    <% if defined?(edit) and edit %>
+      <p class="help-block">
+        Vær opmærksom på at ændringer kun gælder fremtidige regnskaber.
+      </p>
+    <% end %>
+    <br>
+
+    <%= f.label :visible, 'Synlig' %>
+    <%= f.check_box :visible %>
+    <br>
+    <br>
+
+    <%= f.submit title, class: 'btn btn-default' %>
+    <%= link_to 'Tilbage', products_path %>
+  </fieldset>
+<% end %>

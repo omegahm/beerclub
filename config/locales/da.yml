@@ -1,2 +1,11 @@
 da:
-  hello: "Hello world"
+  time:
+    formats:
+      default: '%Y-%m-%d'
+  number:
+    currency:
+      format:
+        separator: ','
+        delimiter: '.'
+        format: '%u %n'
+        unit: 'kr.'

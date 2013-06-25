@@ -1,6 +1,8 @@
 <%= form_for(@administrator) do |f| %>
   <fieldset>
-    <legend><%= title -%></legend>
+    <legend>
+      <h1><%= title -%></h1>
+  </legend>
   
     <% if @administrator.errors.any? %>
       <div id="error_explanation">

@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h1><i class="icon-group"></i> Brugere</h1>
+</div>
+
+<table class="table table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Navn</th>
+      <th>Værelse</th>
+      <th>Synlig</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.room %></td>
+        <td>
+          <i class="icon-check<%= user.visible ? '' : '-empty' -%>"></i>
+        </td>
+        <td class="text-right">
+          <i class="icon-edit"></i>
+          <%= link_to 'Rediger', edit_user_path(user) %>
+        </td>
+        <td class="text-right">
+          <i class="icon-remove"></i>
+          <%= link_to 'Slet', user, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ny bruger', new_user_path %> |
+<% if params[:all] %>
+  <%= link_to 'Vis kun synlige', users_path(params.except(:all)) %>
+<% else %>
+  <%= link_to 'Vis alle', users_path(all: true) %>
+<% end %>

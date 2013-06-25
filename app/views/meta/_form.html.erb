@@ -1,0 +1,40 @@
+<%= form_for(@metum) do |f| %>
+  <fieldset>
+    <legend>
+      <h1><%= title -%></h1>
+    </legend>
+    <% if @metum.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@metum.errors.count, "error") %> prohibited this metum from being saved:</h2>
+
+        <ul>
+        <% @metum.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if defined?(edit) and edit %>
+      <div class="alert alert-warning">
+        Du er ved at opdatere metadata fra <%= l @metum.created_at %>.<br>
+        Er du sikker på at det er det du vil?
+      </div>
+    <% end %>
+
+    <%= f.label :cash, 'Kontanter' %><br>
+    <%= f.text_field :cash %>
+    <br>
+
+    <%= f.label :loss, 'Svind' %><br>
+    <%= f.text_field :loss %>
+    <br>
+
+    <%= f.label :stock, 'Ølbeholdning' %><br>
+    <%= f.text_field :stock %>
+    <br>
+
+    <%= f.submit title, class: 'btn btn-default' %>
+    <%= link_to 'Tilbage', meta_path %>
+  </fieldset>
+<% end %>

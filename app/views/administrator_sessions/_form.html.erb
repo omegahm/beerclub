@@ -1,6 +1,9 @@
 <%= form_for(@administrator_session) do |f| %>
   <fieldset>
-    <legend><%= title -%></legend>    
+    <legend>
+      <h1><%= title -%></h1>
+    </legend>    
+    
     <% if @administrator_session.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@administrator_session.errors.count, "error") %> prohibited this administrator_session from being saved:</h2>

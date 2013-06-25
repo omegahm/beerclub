@@ -41,10 +41,13 @@ end
 
 group :test do
   gem 'factory_girl_rails', :require => false
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'fuubar'
+end
+
+group :test, :development do
+  gem 'rspec-rails'
 end
 
 gem 'rack-mini-profiler', require: 'rack-mini-profiler'

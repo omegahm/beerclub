@@ -14,17 +14,80 @@
     <tr>
       <th>Navn</th>
       <th>Værelse</th>
+      <% @products.each do |product| %>
+        <th><%= product.name %></th>
+      <% end %>
+      <th>Indbetalt</th>
+      <th>Balance</th>
     </tr>
   </thead>
   
   <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.room %></td>
+        <% @products.each do |product| %>
+          <td class="text-right"><%= @quantities[[user.id, product.id]].presence || 0 %></td>
+        <% end %>
+        <td class="text-right"><%= number_to_currency (@payments[user.id].presence || 0) %></td>
+        <td class="text-right"><%= number_to_currency ((@balances[user.id].presence || 0) + (@payments[user.id].presence || 0)) %></td>
+      </tr>
+    <% end %>
+
     <tr>
-      <td>Ohm</td>
-      <td>x410</td>
-    </tr>
-    <tr>
-      <td>Rasmus</td>
-      <td>404</td>
+      <th>Total</th>
+      <th></th>
+      <% @products.each do |product| %>
+        <th class="text-right"><%= @totals[product.id] %></th>
+      <% end %>
+      <% total_paid = @payments.inject(0) {|sum, b| sum += b.second} %>
+      <th class="text-right"><%= number_to_currency total_paid %></th>
+      <% total_balance = (@balances.inject(0) {|sum, b| sum += b.second} + total_paid) %>
+      <th class="text-right"><%= number_to_currency total_balance %></th>
     </tr>
   </tbody>
 </table>
+
+<div class="row">
+  <div class="col col-lg-2">
+    <table class="table table-bordered table-striped table-condensed">
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td class="text-right"><%= number_to_currency product.price %></td>
+      <% end %>
+    </table>
+  </div>
+  <div class="col col-lg-3 col-offset-7">
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <td>Salg sidste måned</td>
+          <td class="text-right"><%= number_to_currency @sales_last_month %></td>
+        </tr>
+
+        <tr>
+          <td>Kontant</td>
+          <td class="text-right"><%= number_to_currency @last_month_meta[:cash] %></td>
+        </tr>
+
+        <tr>
+          <td>Svind</td>
+          <td class="text-right"><%= number_to_currency @last_month_meta[:loss] %></td>
+        </tr>
+
+        <tr>
+          <td>Ølbeholdning</td>
+          <td class="text-right"><%= number_to_currency @last_month_meta[:stock] %></td>
+        </tr>
+
+        <tr>
+          <th>Penge i alt</th>
+          <th class="text-right"><%= number_to_currency total_balance + @last_month_meta[:stock] + @last_month_meta[:cash] %></th>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

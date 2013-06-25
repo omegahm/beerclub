@@ -11,7 +11,7 @@ class AdministratorSessionsController < ApplicationController
 
     respond_to do |format|
       if @administrator_session.save
-        format.html { redirect_to administrators_path, notice: 'Login successful' }
+        format.html { redirect_to administrators_path, notice: 'Du er nu logged ind.' }
         format.json { render action: 'show', status: :created, location: @administrator_session }
       else
         format.html { render action: 'new' }
@@ -27,7 +27,7 @@ class AdministratorSessionsController < ApplicationController
     @administrator_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to administrators_path, notice: 'Goodbye' }
+      format.html { redirect_to administrators_path, notice: 'På gensyn!' }
       format.json { head :no_content }
     end
   end
