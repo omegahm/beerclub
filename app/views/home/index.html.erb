@@ -12,7 +12,20 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Navn</th>
+      <th>
+        Navn
+        <span class="pull-right">
+          <% if params[:all] %>
+            <%= link_to root_path(params.except(:all)) do %>
+              <i class="icon-eye-close"></i>
+            <% end %>
+          <% else %>
+            <%= link_to root_path(all: true) do %>
+              <i class="icon-eye-open"></i>
+            <% end %>
+          <% end %>
+        </span>
+      </th>
       <th>Værelse</th>
       <% @products.each do |product| %>
         <th>
@@ -97,13 +110,3 @@
     </table>
   </div>
 </div>
-
-<% if params[:all] %>
-  <%= link_to root_path(params.except(:all)) do %>
-    Vis kun nuværende medlemmer
-  <% end %>
-<% else %>
-  <%= link_to root_path(all: true) do %>
-    Vis alle
-  <% end %>
-<% end %>

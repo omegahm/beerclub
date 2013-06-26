@@ -37,7 +37,7 @@ class HomeController < ApplicationController
   private
     def load_data
       @users = User.order_by_room
-      @products = Product.all
+      @products = Product.order(:created_at)
 
       unless params[:all]
         @users = @users.visible
