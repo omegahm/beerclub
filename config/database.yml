@@ -1,18 +1,16 @@
 common: &COMMON
+  adapter: postgresql
   encoding: utf-8
   pool: 5
   username: beerclub
 
 production:
   <<: *COMMON
-  adapter: justonedb
 
 development:
   <<: *COMMON
-  adapter: postgresql
   database: beerclub_development
 
 test:
   <<: *COMMON
-  adapter: postgresql
   database: beerclub_test

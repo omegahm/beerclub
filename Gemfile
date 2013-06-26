@@ -33,6 +33,8 @@ gem 'prawn_rails'
 
 gem 'highcharts-rails'
 
+gem 'pg'
+
 group :production do
   gem 'justonedb'
 end
@@ -47,7 +49,7 @@ group :development do
   gem 'mailcatcher'
   gem 'pry'
   gem 'quiet_assets'
-  gem 'pg'
+  
 end
 
 group :test do
