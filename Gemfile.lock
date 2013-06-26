@@ -6,9 +6,20 @@ GIT
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
 
+GIT
+  remote: https://github.com/prawnpdf/prawn.git
+  revision: 8028ca0cd2aae8c72df9fc4bf16388948423bcb2
+  specs:
+    prawn (1.0.0.rc2)
+      afm
+      pdf-reader (~> 1.2)
+      ruby-rc4
+      ttfunk (~> 1.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (1.0.2)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -34,6 +45,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.4)
+    afm (0.2.0)
     annotate (2.5.0)
       rake
     arel (4.0.0)
@@ -101,11 +113,14 @@ GEM
       ruby-progressbar (~> 1.0)
     haml (4.0.3)
       tilt
+    hashery (2.1.0)
     heroku (2.25.0)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
       rest-client (~> 1.6.1)
       rubyzip
+    highcharts-rails (3.0.2)
+      railties (>= 3.1)
     hike (1.2.3)
     hirb (0.7.1)
     i18n (0.6.4)
@@ -151,8 +166,17 @@ GEM
     newrelic_rpm (3.6.4.122)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    pdf-reader (1.3.3)
+      Ascii85 (~> 1.0.0)
+      afm (~> 0.2.0)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     pg (0.15.1)
     polyglot (0.3.3)
+    prawn_rails (0.0.11)
+      prawn (>= 0.11.1)
+      railties (>= 3.0.0)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -175,6 +199,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails-i18n (0.7.3)
+      i18n (~> 0.5)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -208,6 +234,7 @@ GEM
       rspec-mocks (~> 2.13.0)
     ruby-hmac (0.4.0)
     ruby-progressbar (1.1.1)
+    ruby-rc4 (0.1.5)
     rubyzip (0.9.9)
     sass (3.2.9)
     sass-rails (4.0.0)
@@ -245,8 +272,7 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.2.0)
-      coffee-rails
+    ttfunk (1.0.3)
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -276,6 +302,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   fuubar
+  highcharts-rails
   hirb
   jbuilder (~> 1.2)
   jquery-rails
@@ -284,16 +311,18 @@ DEPENDENCIES
   mailcatcher
   newrelic_rpm
   pg
+  prawn!
+  prawn_rails
   pry
   quiet_assets
   rack-mini-profiler
   rack-timeout
   rails (= 4.0.0)
+  rails-i18n
   rails_12factor
   rails_serve_static_assets
   rspec-rails
   sass-rails (~> 4.0.0.rc2)
   thin
-  turbolinks
   uglifier (>= 1.3.0)
   unicorn

@@ -11,6 +11,9 @@ Beerclub::Application.routes.draw do
   get 'login' => 'administrator_sessions#new', as: :login
   get 'logout' => 'administrator_sessions#destroy', as: :logout
   
+  get 'print' => 'home#account', constraints: {format: :pdf}, as: :print
+  get 'graph/:id' => 'home#graph', as: :graph
+
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

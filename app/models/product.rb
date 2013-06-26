@@ -1,7 +1,9 @@
 class Product < ActiveRecord::Base
+  has_many :bills
+
   validates :name, :price, presence: true
 
-  scope :visible, where(visible: true)
+  scope :visible, -> { where(visible: true) }
 end
 
 # == Schema Information

@@ -16,7 +16,7 @@
   <tbody>
     <% @meta.each do |metum| %>
       <tr>
-        <td><%= l metum.created_at %></td>
+        <td><%= l metum.created_at, format: '%e. %B %Y' %></td>
         <td><%= number_to_currency metum.cash %></td>
         <td><%= number_to_currency metum.loss %></td>
         <td><%= number_to_currency metum.stock %></td>

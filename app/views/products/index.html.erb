@@ -7,6 +7,7 @@
     <tr>
       <th>Navn</th>
       <th>Nuværende pris</th>
+      <th>Synlig</th>
       <th></th>
       <th></th>
     </tr>
@@ -17,6 +18,9 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= number_to_currency product.price %></td>
+        <td>
+          <i class="icon-check<%= product.visible ? '' : '-empty' -%>"></i>
+        </td>
         <td class="text-right">
           <i class="icon-edit"></i>
           <%= link_to 'Rediger', edit_product_path(product) %>

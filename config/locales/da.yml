@@ -1,7 +1,4 @@
 da:
-  time:
-    formats:
-      default: '%Y-%m-%d'
   number:
     currency:
       format:

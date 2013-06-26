@@ -4,6 +4,7 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+gem 'rails-i18n'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -22,12 +23,15 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 gem 'asset_sync'
 
 gem 'newrelic_rpm'
+
+# For printing to PDF
+gem 'prawn', :git => 'https://github.com/prawnpdf/prawn.git'
+gem 'prawn_rails'
+
+gem 'highcharts-rails'
 
 group :production do
   gem 'justonedb'

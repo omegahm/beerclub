@@ -15,7 +15,14 @@
       <th>Navn</th>
       <th>Værelse</th>
       <% @products.each do |product| %>
-        <th><%= product.name %></th>
+        <th>
+          <%= product.name %> 
+          <span class="pull-right">
+            <%= link_to graph_path(product.id) do %>
+              <i class="icon-bar-chart"></i>
+            <% end %>
+          </span>
+        </th>
       <% end %>
       <th>Indbetalt</th>
       <th>Balance</th>
@@ -28,10 +35,10 @@
         <td><%= user.name %></td>
         <td><%= user.room %></td>
         <% @products.each do |product| %>
-          <td class="text-right"><%= @quantities[[user.id, product.id]].presence || 0 %></td>
+          <td class="text-right"><%= number_with_delimiter (@quantities[[user.id, product.id]].presence || 0) %></td>
         <% end %>
-        <td class="text-right"><%= number_to_currency (@payments[user.id].presence || 0) %></td>
-        <td class="text-right"><%= number_to_currency ((@balances[user.id].presence || 0) + (@payments[user.id].presence || 0)) %></td>
+        <td class="text-right"><%= number_to_colored_currency (@payments[user.id].presence || 0) %></td>
+        <td class="text-right"><%= number_to_colored_currency ((@balances[user.id].presence || 0) + (@payments[user.id].presence || 0)) %></td>
       </tr>
     <% end %>
 
@@ -39,12 +46,12 @@
       <th>Total</th>
       <th></th>
       <% @products.each do |product| %>
-        <th class="text-right"><%= @totals[product.id] %></th>
+        <th class="text-right"><%= number_with_delimiter @totals[product.id] %></th>
       <% end %>
       <% total_paid = @payments.inject(0) {|sum, b| sum += b.second} %>
-      <th class="text-right"><%= number_to_currency total_paid %></th>
+      <th class="text-right"><%= number_to_colored_currency total_paid %></th>
       <% total_balance = (@balances.inject(0) {|sum, b| sum += b.second} + total_paid) %>
-      <th class="text-right"><%= number_to_currency total_balance %></th>
+      <th class="text-right"><%= number_to_colored_currency total_balance %></th>
     </tr>
   </tbody>
 </table>
@@ -59,35 +66,44 @@
       <% end %>
     </table>
   </div>
-  <div class="col col-lg-3 col-offset-7">
+  <div class="col col-lg-4 col-offset-6">
     <table class="table table-bordered table-striped table-condensed">
       <tbody>
         <tr>
           <td><i class="icon-legal"></i> Salg sidste måned</td>
-          <td class="text-right"><%= number_to_currency @sales_last_month %></td>
+          <td class="text-right"><%= number_to_colored_currency @sales_last_month %></td>
         </tr>
 
         <tr>
           <td><i class="icon-usd"></i> Kontant</td>
-          <td class="text-right"><%= number_to_currency @last_month_meta[:cash] %></td>
+          <td class="text-right"><%= number_to_colored_currency @last_month_meta[:cash] %></td>
         </tr>
 
         <tr>
           <td><i class="icon-frown"></i> Svind</td>
-          <td class="text-right"><%= number_to_currency @last_month_meta[:loss] %></td>
+          <td class="text-right"><%= number_to_colored_currency @last_month_meta[:loss] %></td>
         </tr>
 
         <tr>
           <td><i class="icon-dashboard"></i> Ølbeholdning</td>
-          <td class="text-right"><%= number_to_currency @last_month_meta[:stock] %></td>
+          <td class="text-right"><%= number_to_colored_currency @last_month_meta[:stock] %></td>
         </tr>
 
         <tr>
           <th><i class="icon-money"></i> Penge i alt</th>
-          <th class="text-right"><%= number_to_currency total_balance + @last_month_meta[:stock] + @last_month_meta[:cash] %></th>
+          <th class="text-right"><%= number_to_colored_currency -total_balance + @last_month_meta[:stock] + @last_month_meta[:cash] %></th>
         </tr>
       </tbody>
     </table>
-
   </div>
 </div>
+
+<% if params[:all] %>
+  <%= link_to root_path(params.except(:all)) do %>
+    Vis kun nuværende medlemmer
+  <% end %>
+<% else %>
+  <%= link_to root_path(all: true) do %>
+    Vis alle
+  <% end %>
+<% end %>

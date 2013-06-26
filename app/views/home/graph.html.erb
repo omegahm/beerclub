@@ -1,0 +1,59 @@
+<div id="graph-container"></div>
+
+<% content_for :scripts do %>
+  <script>
+    $(function () {
+      $('#graph-container').highcharts({
+          chart: {
+            type: 'spline',
+            height: '1000',
+            zoomType: 'xy'
+          },
+
+          title: {
+            text: '<%= @product.name -%>'
+          },
+
+          xAxis: {
+            categories: <%= @dates.map { |date| l Date.parse(date.inspect), format: :long }.to_json.html_safe %>,
+            labels: {
+              rotation: 90,
+              align: 'left'
+            }
+          },
+
+          yAxis: {
+            alternateGridColor: '#F2F1F0',
+            min: 0
+          },
+
+          legend: {
+            margin: 50
+          },
+
+          plotOptions: {
+            spline: {
+              marker: {
+                enabled: false
+              }
+            }
+          },
+
+          series: [
+            <%- @bills.each do |user_id, bill| -%>
+              {
+                name: '<%= @user_meta[user_id].first -%>',
+                visible: <%= @user_meta[user_id].second -%>,
+                <%- sum ||= 0 -%>
+                data: [<%- @dates.each do |date| -%>
+                  <%- sum += bill[Date.parse(date.inspect).to_s] || 0 -%>
+                  <%= sum == 0 ? 'null' : sum -%>
+                  <%= "," unless @dates.last == date -%>
+                <%- end -%>]
+              },
+            <%- end -%>
+          ]
+      });
+    });
+  </script>
+<% end %>

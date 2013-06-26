@@ -32,5 +32,6 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #  visible    :boolean          default(TRUE)
+#  temp_id    :integer
 #
 
