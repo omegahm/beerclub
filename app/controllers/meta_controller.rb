@@ -4,7 +4,7 @@ class MetaController < ApplicationController
   # GET /meta
   # GET /meta.json
   def index
-    @meta = Metum.all
+    @meta = Metum.order(:created_at)
   end
 
   # GET /meta/new

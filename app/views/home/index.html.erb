@@ -63,27 +63,27 @@
     <table class="table table-bordered table-striped table-condensed">
       <tbody>
         <tr>
-          <td>Salg sidste måned</td>
+          <td><i class="icon-legal"></i> Salg sidste måned</td>
           <td class="text-right"><%= number_to_currency @sales_last_month %></td>
         </tr>
 
         <tr>
-          <td>Kontant</td>
+          <td><i class="icon-usd"></i> Kontant</td>
           <td class="text-right"><%= number_to_currency @last_month_meta[:cash] %></td>
         </tr>
 
         <tr>
-          <td>Svind</td>
+          <td><i class="icon-frown"></i> Svind</td>
           <td class="text-right"><%= number_to_currency @last_month_meta[:loss] %></td>
         </tr>
 
         <tr>
-          <td>Ølbeholdning</td>
+          <td><i class="icon-dashboard"></i> Ølbeholdning</td>
           <td class="text-right"><%= number_to_currency @last_month_meta[:stock] %></td>
         </tr>
 
         <tr>
-          <th>Penge i alt</th>
+          <th><i class="icon-money"></i> Penge i alt</th>
           <th class="text-right"><%= number_to_currency total_balance + @last_month_meta[:stock] + @last_month_meta[:cash] %></th>
         </tr>
       </tbody>
