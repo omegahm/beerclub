@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :bills
   has_many :payments
 
+  after_create :create_deposit_fee
+
   validates :name, :room, presence: true
 
   scope :visible, -> { where(visible: true) }
@@ -12,6 +14,10 @@ class User < ActiveRecord::Base
                 WHEN '4' THEN users.room 
                 ELSE (lpad(lpad(users.room, 10, '0'), 20, 'z')) 
                 END") }
+
+  def create_deposit_fee
+    Payment.create(user_id: self.id, amount: -50.0)
+  end
 end
 
 # == Schema Information
