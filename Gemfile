@@ -27,6 +27,8 @@ gem 'turbolinks'
 
 gem 'asset_sync'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
