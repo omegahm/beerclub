@@ -29,6 +29,10 @@ gem 'asset_sync'
 
 gem 'newrelic_rpm'
 
+group :production do
+  gem 'mysql'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
