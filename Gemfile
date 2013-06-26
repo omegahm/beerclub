@@ -30,7 +30,7 @@ gem 'asset_sync'
 gem 'newrelic_rpm'
 
 group :production do
-  gem 'mysql'
+  gem 'justonedb'
 end
 
 group :development do
