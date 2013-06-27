@@ -39,6 +39,8 @@ gem 'memcachier'
 gem 'dalli'
 gem 'actionpack-action_caching'
 
+gem 'sentry-raven'
+
 group :production do
   gem 'justonedb'
 end
