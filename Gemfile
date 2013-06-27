@@ -35,6 +35,10 @@ gem 'highcharts-rails'
 
 gem 'pg'
 
+gem 'memcachier'
+gem 'dalli'
+gem 'actionpack-action_caching'
+
 group :production do
   gem 'justonedb'
 end

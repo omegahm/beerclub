@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  before_filter :set_product, only: [:graph]
+  caches_action :graph
+
   # GET /
   def index
     load_data
@@ -10,9 +13,7 @@ class HomeController < ApplicationController
   end
 
   # GET /graph/:id
-  def graph
-    set_product
-    
+  def graph    
     # Gives [user_id, date] => quantity
     @product_counts = Bill.where("product_id = ?", @product.id).group("bills.user_id").group("date_trunc('day', bills.created_at)").order("date_trunc_day_bills_created_at").sum("quantity")
 
