@@ -7,6 +7,16 @@ GIT
       sass (~> 3.2)
 
 GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: 1ddda159f1e68b9b72fca11c9e2b364fa8572980
+  specs:
+    sentry-raven (0.4.8)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      multi_json (~> 1.0)
+      uuidtools
+
+GIT
   remote: https://github.com/prawnpdf/prawn.git
   revision: 8028ca0cd2aae8c72df9fc4bf16388948423bcb2
   specs:
@@ -249,11 +259,6 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    sentry-raven (0.4.8)
-      faraday (>= 0.7.6)
-      hashie (>= 1.1.0)
-      multi_json (~> 1.0)
-      uuidtools
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -340,7 +345,7 @@ DEPENDENCIES
   rails_serve_static_assets
   rspec-rails
   sass-rails (~> 4.0.0.rc2)
-  sentry-raven
+  sentry-raven!
   thin
   uglifier (>= 1.3.0)
   unicorn

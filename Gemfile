@@ -39,7 +39,7 @@ gem 'memcachier'
 gem 'dalli'
 gem 'actionpack-action_caching'
 
-gem 'sentry-raven'
+gem 'sentry-raven', :git => "https://github.com/getsentry/raven-ruby.git"
 
 group :production do
   gem 'justonedb'
