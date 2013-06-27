@@ -1,28 +1,22 @@
-== README
+== KK400 Ølloge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a custom made accounting system for "KK400 Ølloge (tm)".
+The main features, is that one accountant can add lines for each type of beverage a user has been drinking the past month, and then print a new sheet to be hung on the fridge.
 
-Things you may want to cover:
+Other than that, an admin can create new products, new users, new admins (with same privileges) and update some meta statistics. An admin can also hide products and users, without removing their data from the app.
 
-* Ruby version
+Some graphs are available, with each product for each user plotted against time. Highcharts (r) are used here, to provide an easy way to do this.
 
-* System dependencies
+== Caveats
 
-* Configuration
+The first administrator has to be made via the console. Other than that, each admin is able to create new admins with the same privileges (all admins have the same privileges)
 
-* Database creation
+To create the first admin, simply run:
 
-* Database initialization
+    Administrator.create(username: 'username', password: 'password', password_confirmation: 'password')
+    
+This can be any password, and the password can be changed in the UI afterwards.
 
-* How to run the test suite
+== License
+MIT
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
