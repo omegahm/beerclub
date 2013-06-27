@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "meta/new" do
   before(:each) do
     assign(:metum, stub_model(Metum,
-      :cash => 1.5,
-      :loss => 1.5,
-      :stock => 1.5
+      cash: 1.5,
+      loss: 1.5,
+      stock: 1.5
     ).as_new_record)
   end
 

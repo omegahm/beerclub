@@ -3,9 +3,10 @@ require 'spec_helper'
 describe "meta/edit" do
   before(:each) do
     @metum = assign(:metum, stub_model(Metum,
-      :cash => 1.5,
-      :loss => 1.5,
-      :stock => 1.5
+      cash: 1.5,
+      loss: 1.5,
+      stock: 1.5,
+      created_at: Date.today
     ))
   end
 

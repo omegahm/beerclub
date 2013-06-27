@@ -41,3 +41,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def stub_admin
+  @admin = FactoryGirl.create(:administrator)
+  ApplicationController.any_instance.stub(:current_administrator) { @admin }
+end

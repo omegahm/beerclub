@@ -1,4 +1,5 @@
 class MetaController < ApplicationController
+  before_filter :require_administrator
   before_action :set_metum, only: [:edit, :update, :destroy]
 
   # GET /meta

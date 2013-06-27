@@ -12,8 +12,7 @@ describe AdministratorsController do
 
     context 'logged in' do
       before do
-        @admin = FactoryGirl.create(:administrator)
-        controller.stub(:current_administrator) { @admin }
+        stub_admin
       end 
 
       it "responds successfully with an HTTP 200 status code" do
