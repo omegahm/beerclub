@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   before_filter :set_product, only: [:graph]
-  caches_action :graph
+  caches_action :graph, expires_in: 1.day
 
   # GET /
   def index
