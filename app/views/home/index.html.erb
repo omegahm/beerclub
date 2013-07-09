@@ -44,7 +44,7 @@
   
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr<%= user.visible? ? '' : ' class="old-user"'.html_safe -%>>
         <td><%= user.name %></td>
         <td><%= user.room %></td>
         <% @products.each do |product| %>

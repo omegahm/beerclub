@@ -56,3 +56,9 @@ html, body {
 .negative {
   color: red;
 }
+
+.old-user {
+  &, td {
+    background-color: beige !important;
+  }
+}
