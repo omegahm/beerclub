@@ -8,6 +8,7 @@
       <th>Navn</th>
       <th>Nuværende pris</th>
       <th>Synlig</th>
+      <th>Størrelse på print</th>
       <th></th>
       <th></th>
     </tr>
@@ -21,6 +22,7 @@
         <td>
           <i class="icon-check<%= product.visible ? '' : '-empty' -%>"></i>
         </td>
+        <td><%= product.width %></td>
         <td class="text-right">
           <i class="icon-edit"></i>
           <%= link_to 'Rediger', edit_product_path(product) %>
@@ -33,6 +35,10 @@
     <% end %>
   </tbody>
 </table>
+
+<p>
+  Summen af størrelse på print på aktive produkter, skal summere til maksimum 549.89. Nuværende sum er: <%= @sum_of_width %>
+</p>
 
 <br>
 

@@ -20,6 +20,13 @@
     <%= f.text_field :name %>
     <br>
 
+    <%= f.label :width, 'Størrelse på print' %><br>
+    <%= f.text_field :width %>
+    <p class="help-block">
+      <small>Standard størrelsen på print er <em>130</em>. "Indbetalt" kolonnen vil være flydende bredde, mens de andre vil være faste.</small>
+    </p>
+    <br>
+
     <%= f.label :price, 'Pris' %><br>
     <div class="input-group">
       <span class="input-group-addon">kr.</span>

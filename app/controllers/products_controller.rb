@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.order(:created_at)
+    @sum_of_width = @products.visible.sum(:width)
   end
 
   # GET /products/new
@@ -65,6 +66,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :visible)
+      params.require(:product).permit(:name, :price, :visible, :width)
     end
 end

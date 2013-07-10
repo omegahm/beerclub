@@ -20,11 +20,11 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
              { content: 'Værelse', width: 50 }
            ] + 
 
-           @products.map(&:name) + 
+           @products.map {|p| { content: p.name, width: p.width.presence || 130 } } + 
            
            [
-             { content: 'Indbetalt', width: 50 }, 
-             { content: 'Balance',   width: 70 }
+             { content: 'Indbetalt' }, 
+             { content: 'Balance', width: 70}
           ]
          ]
 
