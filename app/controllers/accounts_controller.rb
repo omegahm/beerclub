@@ -34,8 +34,9 @@ class AccountsController < ApplicationController
         # Product id 0 is payments
         Payment.create(user_id: user_id, amount: hash['amount'].to_f)
       else
-        if hash['quantity'].to_i > 0 and @product_prices[product_id].present?
-          Bill.create(user_id: user_id, product_id: product_id, price: @product_prices[product_id], quantity: hash['quantity'])
+        sum = hash['quantity'].split(/\+/).map(&:to_i).sum
+        if sum > 0 and @product_prices[product_id].present?
+          Bill.create(user_id: user_id, product_id: product_id, price: @product_prices[product_id], quantity: sum)
         end
       end
     end
