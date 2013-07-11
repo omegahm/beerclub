@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Order by room with 400 coming first, after that every other 3 digit, and then 4 digits and above
   scope :order_by_room, 
-    -> { order("CASE substring(users.room for 1) 
+    -> { order("visible DESC, CASE substring(users.room for 1) 
                 WHEN '4' THEN users.room 
                 ELSE (lpad(lpad(users.room, 10, '0'), 20, 'z')) 
                 END") }

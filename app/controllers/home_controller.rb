@@ -40,11 +40,6 @@ class HomeController < ApplicationController
       @users = User.order_by_room
       @products = Product.order(:created_at)
 
-      unless params[:all]
-        @users = @users.visible
-        @products = @products.visible
-      end
-
       @payments = Payment.group(:user_id).sum(:amount)
       bill_scope = Bill.joins(:user).group(:user_id)
       @quantities = bill_scope.group(:product_id).sum(:quantity)

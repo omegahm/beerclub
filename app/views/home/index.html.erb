@@ -15,15 +15,8 @@
       <th>
         Navn
         <span class="pull-right">
-          <% if params[:all] %>
-            <%= link_to root_path(params.except(:all)) do %>
-              <i class="icon-eye-close"></i>
-            <% end %>
-          <% else %>
-            <%= link_to root_path(all: true) do %>
-              <i class="icon-eye-open"></i>
-            <% end %>
-          <% end %>
+          <a class="show-old-users icon-eye-open"></a>
+          <a class="hide-old-users icon-eye-close hide"></a>
         </span>
       </th>
       <th>Værelse</th>
@@ -31,7 +24,7 @@
         <th>
           <%= product.name %> 
           <span class="pull-right">
-            <%= link_to graph_path(product.id) do %>
+            <%= link_to graph_path(product.id), class: 'graph' do %>
               <i class="icon-bar-chart"></i>
             <% end %>
           </span>
@@ -56,7 +49,13 @@
     <% end %>
 
     <tr>
-      <th>Total</th>
+      <th>
+        Total
+        <span class="pull-right">
+          <a class="show-old-users icon-eye-open"></a>
+          <a class="hide-old-users icon-eye-close hide"></a>
+        </span>
+      </th>
       <th></th>
       <% @products.each do |product| %>
         <th class="text-right"><%= number_with_delimiter @totals[product.id] %></th>

@@ -1,10 +1,36 @@
+<span class="resize-graph">
+  <i class="icon-resize-full"></i> 
+  <span class="up">Forøg</span>
+  <span class="down hide">Formindsk</span>
+  størrelse på graf
+</span>
 <div id="graph-container"></div>
 
 <% content_for :scripts do %>
   <script>
+    var chart, size;
+    var oldWidth;
+    var newWidth = <%= @bills.size * 100 -%>;
+    var toggleUp = true;
+
     $(function () {
-      $('#graph-container').highcharts({
+      $('.resize-graph').click(function() {
+        if (toggleUp) {
+          size = newWidth;
+          oldWidth = chart.chartWidth;
+        } else {
+          size = oldWidth
+        }
+
+        chart.setSize(size);
+        
+        toggleUp = !toggleUp;
+        $('.up, .down').toggleClass('hide');
+      });
+
+      chart = new Highcharts.Chart({
           chart: {
+            renderTo: 'graph-container',
             type: 'spline',
             height: '1000',
             zoomType: 'xy'

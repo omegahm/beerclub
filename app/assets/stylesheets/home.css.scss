@@ -46,6 +46,16 @@ html, body {
   text-align: right;
 }
 
+.resize-graph {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+
+    i {
+      text-decoration: none;
+    }
+  }
+}
 
 /* Table CSS
 -------------------------------------------------- */
@@ -60,5 +70,13 @@ html, body {
 .old-user {
   &, td {
     background-color: beige !important;
+    display: none;
+  }
+}
+
+.show-old-users, .hide-old-users, .graph {
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
   }
 }
