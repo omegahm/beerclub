@@ -10,6 +10,8 @@ class HomeController < ApplicationController
   # GET /account.pdf
   def account
     load_data
+    @users = @users.visible
+    @products = @products.visible
   end
 
   # GET /graph/:id
