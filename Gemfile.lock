@@ -1,13 +1,5 @@
 GIT
-  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: f27b4092e715711773edf660461cd4392cf3a43b
-  branch: 3
-  specs:
-    bootstrap-sass (2.3.1.0)
-      sass (~> 3.2)
-
-GIT
-  remote: https://github.com/getsentry/raven-ruby.git
+  remote: git://github.com/getsentry/raven-ruby.git
   revision: eb1a0072af1132594c574cc6a64618cf900e4810
   specs:
     sentry-raven (0.5.0)
@@ -16,7 +8,7 @@ GIT
       uuidtools
 
 GIT
-  remote: https://github.com/prawnpdf/prawn.git
+  remote: git://github.com/prawnpdf/prawn.git
   revision: 8028ca0cd2aae8c72df9fc4bf16388948423bcb2
   specs:
     prawn (1.0.0.rc2)
@@ -24,6 +16,23 @@ GIT
       pdf-reader (~> 1.2)
       ruby-rc4
       ttfunk (~> 1.0.3)
+
+GIT
+  remote: git://github.com/rumblelabs/asset_sync.git
+  revision: fefd9ddfa1b609eb39f6003d91dc52acf405a3e4
+  branch: master
+  specs:
+    asset_sync (0.5.4)
+      activemodel
+      fog
+
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: f27b4092e715711773edf660461cd4392cf3a43b
+  branch: 3
+  specs:
+    bootstrap-sass (2.3.1.0)
+      sass (~> 3.2)
 
 GEM
   remote: https://rubygems.org/
@@ -64,9 +73,6 @@ GEM
     annotate (2.5.0)
       rake
     arel (4.0.0)
-    asset_sync (0.5.4)
-      activemodel
-      fog
     atomic (1.1.10)
     authlogic (3.3.0)
       activerecord (>= 3.2)
@@ -316,7 +322,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   annotate
-  asset_sync
+  asset_sync!
   authlogic
   better_errors
   binding_of_caller

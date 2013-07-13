@@ -24,12 +24,12 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'asset_sync'
+gem 'asset_sync', github: 'rumblelabs/asset_sync'
 
 gem 'newrelic_rpm'
 
 # For printing to PDF
-gem 'prawn', :git => 'https://github.com/prawnpdf/prawn.git'
+gem 'prawn', github: 'prawnpdf/prawn'
 gem 'prawn_rails'
 
 gem 'highcharts-rails'
@@ -40,7 +40,7 @@ gem 'memcachier'
 gem 'dalli'
 gem 'actionpack-action_caching'
 
-gem 'sentry-raven', :git => "https://github.com/getsentry/raven-ruby.git"
+gem 'sentry-raven', github: 'getsentry/raven-ruby'
 
 group :production do
   gem 'justonedb'
@@ -60,7 +60,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails', :require => false
+  gem 'factory_girl_rails', require: false
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'fuubar'
