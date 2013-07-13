@@ -23,6 +23,11 @@ module Beerclub
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.version = '1.0'
+
+    # Needs to be false on Heroku
+    config.assets.initialize_on_precompile = false  
+    config.serve_static_assets = true
+    config.static_cache_control = "public, max-age=31536000"
     
     # Add the fonts path
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')

@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'sass-rails', '~> 4.0.0.rc2'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'font-awesome-rails'
+gem 'yui-compressor'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
