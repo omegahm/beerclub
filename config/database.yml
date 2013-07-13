@@ -14,3 +14,4 @@ development:
 test:
   <<: *COMMON
   database: beerclub_test
+  username: postgres
