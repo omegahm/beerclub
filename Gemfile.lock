@@ -20,7 +20,6 @@ GIT
 GIT
   remote: git://github.com/rumblelabs/asset_sync.git
   revision: fefd9ddfa1b609eb39f6003d91dc52acf405a3e4
-  branch: master
   specs:
     asset_sync (0.5.4)
       activemodel
