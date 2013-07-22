@@ -7,9 +7,11 @@ AssetSync.configure do |config|
   
   # Automatically replace files with their equivalent gzip compressed version
   config.gzip_compression = true
+
+  config.existing_remote_files = 'delete'
   
   # Fail silently.  Useful for environments such as Heroku
-  config.fail_silently = true
+  # config.fail_silently = true
 
   config.custom_headers = { '.*' => { Vary: 'Accept-Encoding' } }
 end
