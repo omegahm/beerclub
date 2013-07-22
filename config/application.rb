@@ -24,8 +24,7 @@ module Beerclub
     config.assets.enabled = true
     config.assets.version = '1.0'
 
-    # Needs to be false on Heroku
-    config.assets.initialize_on_precompile = false  
+    # Needs to be false on Heroku 
     config.serve_static_assets = true
     config.static_cache_control = "public, max-age=31536000"
     
