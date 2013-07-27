@@ -1,3 +1,5 @@
+{<img src="https://travis-ci.org/omegahm/beerclub.png?branch=master" alt="Build Status" />}[https://travis-ci.org/omegahm/beerclub]
+
 == KK400 Ølloge
 
 This app is a custom made accounting system for "KK400 Ølloge (tm)".

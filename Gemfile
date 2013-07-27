@@ -10,7 +10,7 @@ gem 'rails-i18n'
 gem 'jbuilder', '~> 1.2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc2'
+gem 'sass-rails', '>= 4.0.0.rc2'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'font-awesome-rails'
 gem 'yui-compressor'
@@ -24,12 +24,12 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'asset_sync', github: 'rumblelabs/asset_sync'
+gem 'asset_sync'
 
 gem 'newrelic_rpm'
 
 # For printing to PDF
-gem 'prawn', github: 'prawnpdf/prawn'
+gem 'prawn', '>= 1.0.0.rc2'
 gem 'prawn_rails'
 
 gem 'highcharts-rails'
@@ -40,7 +40,7 @@ gem 'memcachier'
 gem 'dalli'
 gem 'actionpack-action_caching'
 
-gem 'sentry-raven', github: 'getsentry/raven-ruby'
+gem 'sentry-raven', '~> 0.5.0'
 
 group :production do
   gem 'justonedb'
@@ -56,7 +56,6 @@ group :development do
   gem 'mailcatcher'
   gem 'pry'
   gem 'quiet_assets'
-  
 end
 
 group :test do
@@ -72,7 +71,6 @@ end
 
 gem 'rack-mini-profiler', require: 'rack-mini-profiler'
 gem 'rails_12factor' # required by Heroku
-gem 'rails_serve_static_assets'
 
 gem 'thin'
 gem 'rack-timeout'
