@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: f27b4092e715711773edf660461cd4392cf3a43b
+  revision: e9006aa7a73db6990f469c5ca369df89920fe6d8
   branch: 3
   specs:
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
 
 GEM
@@ -247,7 +247,7 @@ GEM
     ruby-progressbar (1.1.1)
     ruby-rc4 (0.1.5)
     rubyzip (0.9.9)
-    sass (3.2.9)
+    sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
