@@ -15,7 +15,7 @@ class HomeController < ApplicationController
   end
 
   # GET /graph/:id
-  def graph    
+  def graph
     # Gives [user_id, date] => quantity
     @product_counts = Bill.where("product_id = ?", @product.id).group("bills.user_id").group("date_trunc('day', bills.created_at)").order("date_trunc_day_bills_created_at").sum("quantity")
 
@@ -51,13 +51,14 @@ class HomeController < ApplicationController
       @totals = {}
       User.all.each do |user|
         Product.all.each do |product|
-          @totals[product.id] ||= 0 
+          @totals[product.id] ||= 0
           @totals[product.id] += (@quantities[[user.id, product.id]].presence || 0)
         end
       end
 
       @sales_last_month = Bill.group("date_trunc('day', created_at)").order("date_trunc_day_created_at DESC").sum("price * quantity").first.try(:second).try(:to_f)
       @last_month_meta = Metum.last_month
+      @last_bil = Bill.last.created_at
     end
 
     # Use callbacks to share common setup or constraints between actions.

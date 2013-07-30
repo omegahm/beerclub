@@ -1,8 +1,8 @@
 <div class="page-header">
   <h1>
-    KK400 Ølloge&trade;! 
+    KK400 Ølloge&trade;!
     <small>
-      Grafer, tabeller og statistik 
+      Grafer, tabeller og statistik
       <i class="icon-beer"></i>
       <i class="icon-heart"></i>
     </small>
@@ -22,7 +22,7 @@
       <th>Værelse</th>
       <% @products.each do |product| %>
         <th<%= ' class="hidden-product hide"'.html_safe unless product.visible -%>>
-          <%= product.name %> 
+          <%= product.name %>
           <span class="pull-right">
             <%= link_to graph_path(product.id), class: 'graph' do %>
               <i class="icon-bar-chart"></i>
@@ -34,7 +34,7 @@
       <th>Balance</th>
     </tr>
   </thead>
-  
+
   <tbody>
     <% @users.each do |user| %>
       <tr<%= user.visible? ? '' : ' class="old-user"'.html_safe -%>>
@@ -109,5 +109,9 @@
         </tr>
       </tbody>
     </table>
+
+    <div class="text-right">
+      Sidst opgjort: <%= l @last_bil %>
+    </div>
   </div>
 </div>
