@@ -14,13 +14,15 @@
     <% @administrators.each do |administrator| %>
       <tr>
         <td><%= administrator.username %></td>
-        <td class="text-right">
-          <i class="icon-edit"></i>
-          <%= link_to 'Rediger', edit_administrator_path(administrator) %>
+        <td class="text-center">
+          <%= link_to edit_administrator_path(administrator), class: 'btn btn-warning btn-xs' do %>
+            <i class="icon-edit"></i> Rediger
+          <% end %>
         </td>
-        <td class="text-right">
-          <i class="icon-remove"></i>
-          <%= link_to 'Slet', administrator, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        <td class="text-center">
+          <%= link_to administrator, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
+            <i class="icon-remove"></i> Slet
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -29,4 +31,4 @@
 
 <br>
 
-<%= link_to 'Ny administrator', new_administrator_path %>
+<%= link_to 'Ny administrator', new_administrator_path, class: 'btn btn-link' %>

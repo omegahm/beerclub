@@ -18,15 +18,19 @@
         <td><%= user.name %></td>
         <td><%= user.room %></td>
         <td>
-          <i class="icon-check<%= user.visible ? '' : '-empty' -%>"></i>
+          <span class="label label-<%= user.visible ? 'success' : 'danger' -%>">
+            <i class="icon-check<%= user.visible ? '' : '-empty' -%>"></i>
+          </span>
         </td>
-        <td class="text-right">
-          <i class="icon-edit"></i>
-          <%= link_to 'Rediger', edit_user_path(user) %>
+        <td class="text-center">
+          <%= link_to edit_user_path(user), class: 'btn btn-warning btn-xs' do %>
+           <i class="icon-edit"></i> Rediger
+          <% end %>
         </td>
-        <td class="text-right">
-          <i class="icon-remove"></i>
-          <%= link_to 'Slet', user, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        <td class="text-center">
+          <%= link_to user, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
+            <i class="icon-remove"></i> Slet
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -35,9 +39,9 @@
 
 <br>
 
-<%= link_to 'Ny bruger', new_user_path %> |
+<%= link_to 'Ny bruger', new_user_path, class: 'btn btn-link' %> |
 <% if params[:all] %>
-  <%= link_to 'Vis kun synlige', users_path(params.except(:all)) %>
+  <%= link_to 'Vis kun synlige', users_path(params.except(:all)), class: 'btn btn-link' %>
 <% else %>
-  <%= link_to 'Vis alle', users_path(all: true) %>
+  <%= link_to 'Vis alle', users_path(all: true), class: 'btn btn-link' %>
 <% end %>

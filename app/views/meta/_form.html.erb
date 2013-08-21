@@ -1,8 +1,9 @@
-<%= form_for(@metum) do |f| %>
+<%= form_for @metum, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>
       <h1><%= title -%></h1>
     </legend>
+
     <% if @metum.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@metum.errors.count, "error") %> prohibited this metum from being saved:</h2>
@@ -22,21 +23,35 @@
       </div>
     <% end %>
 
-    <%= f.label :cash, 'Kontanter' %><br>
-    <%= f.text_field :cash %>
-    <br>
+    <div class="form-group">
+      <%= f.label :cash, 'Kontanter', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :cash, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.label :loss, 'Svind' %><br>
-    <%= f.text_field :loss %>
-    <p class="help-block">
-      <small>Husk at svind er negativt.</small>
-    </p>
+    <div class="form-group">
+      <%= f.label :loss, 'Svind', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :loss, class: 'form-control' %>
+        <span class="help-block">
+          <small>Husk at svind er negativt.</small>
+        </span>
+      </div>
+    </div>
 
-    <%= f.label :stock, 'Ølbeholdning' %><br>
-    <%= f.text_field :stock %>
-    <br>
+    <div class="form-group">
+      <%= f.label :stock, 'Ølbeholdning', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :stock, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.submit title, class: 'btn btn-default' %>
-    <%= link_to 'Tilbage', meta_path %>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit title, class: 'btn btn-default' %>
+        <%= link_to 'Tilbage', meta_path, class: 'btn btn-link' %>
+      </div>
+    </div>
   </fieldset>
 <% end %>

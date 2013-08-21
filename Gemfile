@@ -7,10 +7,10 @@ gem 'rails', '4.0.0'
 gem 'rails-i18n'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 4.0.0.rc2'
+gem 'sass-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'font-awesome-rails'
 gem 'yui-compressor'
@@ -19,10 +19,10 @@ gem 'yui-compressor'
 gem 'jquery-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 gem 'asset_sync'
 
@@ -40,7 +40,7 @@ gem 'memcachier'
 gem 'dalli'
 gem 'actionpack-action_caching'
 
-gem 'sentry-raven', '~> 0.5.0'
+gem 'sentry-raven'
 
 group :production do
   gem 'justonedb'
@@ -72,10 +72,10 @@ end
 gem 'rack-mini-profiler', require: 'rack-mini-profiler'
 gem 'rails_12factor' # required by Heroku
 
-gem 'thin'
+gem 'thin', require: false
 gem 'rack-timeout'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn', require: false
 
-gem 'authlogic'
+gem 'authlogic', github: 'binarylogic/authlogic'

@@ -1,4 +1,4 @@
-<%= form_for(@product) do |f| %>
+<%= form_for @product, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>
       <h1><%= title -%></h1>
@@ -16,36 +16,54 @@
       </div>
     <% end %>
 
-    <%= f.label :name, 'Produktnavn' %><br>
-    <%= f.text_field :name %>
-    <br>
-
-    <%= f.label :width, 'Størrelse på print' %><br>
-    <%= f.text_field :width %>
-    <p class="help-block">
-      <small>Standard størrelsen på print er <em>130</em>. "Indbetalt" kolonnen vil være flydende bredde, mens de andre vil være faste.</small>
-    </p>
-    <br>
-
-    <%= f.label :price, 'Pris' %><br>
-    <div class="input-group">
-      <span class="input-group-addon">kr.</span>
-      <%= f.text_field :price %>
+    <div class="form-group">
+      <%= f.label :name, 'Produktnavn', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
     </div>
 
-    <% if defined?(edit) and edit %>
-      <p class="help-block">
-        <small>Vær opmærksom på at ændringer kun gælder fremtidige regnskaber.</small>
-      </p>
-    <% end %>
-    <br>
+    <div class="form-group">
+      <%= f.label :width, 'Størrelse på print', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :width, class: 'form-control' %>
+        <span class="help-block">
+          <small>Standard størrelsen på print er <em>130</em>. "Indbetalt" kolonnen vil være flydende bredde, mens de andre vil være faste.</small>
+        </span>
+      </div>
+    </div>
 
-    <%= f.label :visible, 'Synlig' %>
-    <%= f.check_box :visible %>
-    <br>
-    <br>
+    <div class="form-group">
+      <%= f.label :price, 'Pris', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon">kr.</span>
+          <%= f.text_field :price, class: 'form-control' %>
+        </div>
 
-    <%= f.submit title, class: 'btn btn-default' %>
-    <%= link_to 'Tilbage', products_path %>
+        <% if defined?(edit) and edit %>
+          <span class="help-block">
+            <small>Vær opmærksom på at ændringer kun gælder fremtidige regnskaber.</small>
+          </span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :visible %> Synlig
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit title, class: 'btn btn-default' %>
+        <%= link_to 'Tilbage', products_path, class: 'btn btn-link' %>
+      </div>
+    </div>
   </fieldset>
 <% end %>

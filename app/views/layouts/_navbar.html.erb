@@ -1,13 +1,17 @@
 <!-- Fixed navbar -->
-<div class="navbar navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to 'KK400 Ølloge&trade;'.html_safe, root_path, class: 'navbar-brand' %>
-    <div class="nav-collapse collapse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to 'KK400 Ølloge&trade;'.html_safe, root_path, class: 'navbar-brand' %>
+    </div>
+
+    <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active">
           <%= link_to root_path do -%>
@@ -27,7 +31,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="icon-unlock-alt"></i>
-                  <%= current_administrator.username -%> 
+                  <%= current_administrator.username -%>
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
@@ -41,9 +45,9 @@
                       <i class="icon-group"></i> Brugere
                     <% end %>
                   <li>
-                  
+
                   <li class="divider"></li>
-                  
+
                   <li>
                     <%= link_to products_path do -%>
                       <i class="icon-glass"></i> Produkter
@@ -59,9 +63,9 @@
                       <i class="icon-cogs"></i> Meta
                     <% end %>
                   </li>
-                  
+
                   <li class="divider"></li>
-                  
+
                   <li>
                     <%= link_to logout_path do -%>
                       <i class="icon-power-off"></i> Log ud
@@ -79,4 +83,4 @@
       </ul>
     </div><!--/.nav-collapse -->
   </div>
-</div>
+</nav>

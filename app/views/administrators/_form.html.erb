@@ -1,9 +1,9 @@
-<%= form_for(@administrator) do |f| %>
+<%= form_for @administrator, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>
       <h1><%= title -%></h1>
-  </legend>
-  
+    </legend>
+
     <% if @administrator.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@administrator.errors.count, "error") %> prohibited this administrator from being saved:</h2>
@@ -16,19 +16,32 @@
       </div>
     <% end %>
 
-    <%= f.label :username, 'Brugernavn' %><br>
-    <%= f.text_field :username %>
-    <br>
+    <div class="form-group">
+      <%= f.label :username, 'Brugernavn', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.label :password, 'Kodeord' %><br>
-    <%= f.password_field :password %>
-    <br>
+    <div class="form-group">
+      <%= f.label :password, 'Kodeord', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.label :password_confirmation, 'Gentag kodeord' %><br>
-    <%= f.password_field :password_confirmation %>
-    <br>
+    <div class="form-group">
+      <%= f.label :password_confirmation, 'Gentag kodeord', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.submit 'Opret', class: 'btn btn-default' %>
-    <%= link_to 'Tilbage', administrators_path %>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit 'Opret', class: 'btn btn-default' %>
+        <%= link_to 'Tilbage', administrators_path, class: 'btn btn-link' %>
+      </div>
+    </div>
   </fieldset>
 <% end %>

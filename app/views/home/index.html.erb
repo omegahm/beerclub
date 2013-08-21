@@ -9,12 +9,12 @@
   </h1>
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped table-home">
   <thead>
     <tr>
       <th>
         Navn
-        <span class="pull-right">
+        <span class="pull-right label label-success">
           <a class="show-old-users icon-eye-open"></a>
           <a class="hide-old-users icon-eye-close hide"></a>
         </span>
@@ -24,7 +24,7 @@
         <th<%= ' class="hidden-product hide"'.html_safe unless product.visible -%>>
           <%= product.name %>
           <span class="pull-right">
-            <%= link_to graph_path(product.id), class: 'graph' do %>
+            <%= link_to graph_path(product.id), class: 'graph label label-success' do %>
               <i class="icon-bar-chart"></i>
             <% end %>
           </span>
@@ -53,7 +53,7 @@
     <tr>
       <th>
         Total
-        <span class="pull-right">
+        <span class="pull-right label label-success">
           <a class="show-old-users icon-eye-open"></a>
           <a class="hide-old-users icon-eye-close hide"></a>
         </span>
@@ -80,7 +80,7 @@
       <% end %>
     </table>
   </div>
-  <div class="col col-lg-4 col-offset-6">
+  <div class="col col-lg-4 col-lg-offset-6">
     <table class="table table-bordered table-striped table-condensed">
       <tbody>
         <tr>

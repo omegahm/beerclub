@@ -20,13 +20,15 @@
         <td><%= number_to_currency metum.cash %></td>
         <td><%= number_to_currency metum.loss %></td>
         <td><%= number_to_currency metum.stock %></td>
-        <td class="text-right">
-          <i class="icon-edit"></i>
-          <%= link_to 'Rediger', edit_metum_path(metum) %>
+        <td class="text-center">
+          <%= link_to edit_metum_path(metum), class: 'btn btn-warning btn-xs' do %>
+            <i class="icon-edit"></i> Rediger
+          <% end %>
         </td>
-        <td class="text-right">
-          <i class="icon-remove"></i>
-          <%= link_to 'Slet', metum, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        <td class="text-center">
+          <%= link_to metum, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
+            <i class="icon-remove"></i> Slet
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -35,4 +37,4 @@
 
 <br>
 
-<%= link_to 'Opret metadata', new_metum_path %>
+<%= link_to 'Opret metadata', new_metum_path, class: 'btn btn-link' %>

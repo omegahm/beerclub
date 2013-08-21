@@ -1,9 +1,9 @@
-<%= form_for(@administrator_session) do |f| %>
+<%= form_for @administrator_session, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>
       <h1><%= title -%></h1>
-    </legend>    
-    
+    </legend>
+
     <% if @administrator_session.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@administrator_session.errors.count, "error") %> prohibited this administrator_session from being saved:</h2>
@@ -16,14 +16,24 @@
       </div>
     <% end %>
 
-    <%= f.label :username, 'Brugernavn' %><br>
-    <%= f.text_field :username %>
-    <br>
+    <div class="form-group">
+      <%= f.label :username, 'Brugernavn', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.label :password, 'Kodeord' %><br>
-    <%= f.password_field :password %>
-    <br>
-    
-    <%= f.submit title, class: 'btn btn-default' %>
+    <div class="form-group">
+      <%= f.label :password, 'Kodeord', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit title, class: 'btn btn-default' %>
+      </div>
+    </div>
   </fieldset>
 <% end %>

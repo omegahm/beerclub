@@ -47,14 +47,7 @@ html, body {
 }
 
 .resize-graph {
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
 
-    i {
-      text-decoration: none;
-    }
-  }
 }
 
 /* Table CSS
@@ -67,7 +60,7 @@ html, body {
   color: red;
 }
 
-.old-user {
+.table-home .old-user {
   &, td {
     background-color: beige !important;
     display: none;
@@ -75,6 +68,7 @@ html, body {
 }
 
 .show-old-users, .hide-old-users, .graph {
+  color: white;
   &:hover {
     cursor: pointer;
     text-decoration: none;

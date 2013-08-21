@@ -3,9 +3,9 @@
 </div>
 
 <% if params[:all] %>
-  <%= link_to 'Vis kun synlige', accounts_path(params.except(:all)), data: { confirm: 'Du mister alt data, du allerede har indtastet.\nEr du sikker på at du vil gå videre?' } %>
+  <%= link_to 'Vis kun synlige', accounts_path(params.except(:all)), class: 'btn btn-link', data: { confirm: 'Du mister alt data, du allerede har indtastet.\nEr du sikker på at du vil gå videre?' } %>
 <% else %>
-  <%= link_to 'Vis alle', accounts_path(all: true), data: { confirm: 'Du mister alt data, du allerede har indtastet. Er du sikker på at du vil gå videre?' } %>
+  <%= link_to 'Vis alle', accounts_path(all: true), class: 'btn btn-link', data: { confirm: 'Du mister alt data, du allerede har indtastet. Er du sikker på at du vil gå videre?' } %>
 <% end %>
 <br><br>
 
@@ -30,13 +30,13 @@
           <% @products.each do |product| %>
             <%= fields_for "account[#{user.id}_#{product.id}][]", Bill.new do |f| %>
               <td>
-                <%= f.text_field :quantity, class: 'input-small' -%>
+                <%= f.text_field :quantity, class: 'form-control input-sm' -%>
               </td>
             <% end %>
           <% end %>
           <%= fields_for "account[#{user.id}_0][]", Payment.new do |f| %>
             <td>
-              <%= f.text_field :amount, class: 'input-small' -%>
+              <%= f.text_field :amount, class: 'form-control input-sm' -%>
             </td>
           <% end %>
         </tr>

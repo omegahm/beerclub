@@ -7,7 +7,7 @@ FactoryGirl.define do
     password_confirmation 'secret'
   end
 
-  factory :user do 
+  factory :user do
     sequence :name do |n|
       "user#{n}"
     end
@@ -28,5 +28,12 @@ FactoryGirl.define do
       "Beer#{n}"
     end
     price 5.0
+  end
+
+  factory :bill do
+    association :product
+    association :user
+    price 5.0
+    quantity 10
   end
 end

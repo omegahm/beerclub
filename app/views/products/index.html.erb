@@ -20,16 +20,20 @@
         <td><%= product.name %></td>
         <td><%= number_to_currency product.price %></td>
         <td>
-          <i class="icon-check<%= product.visible ? '' : '-empty' -%>"></i>
+          <span class="label label-<%= product.visible ? 'success' : 'danger' -%>">
+            <i class="icon-check<%= product.visible ? '' : '-empty' -%>"></i>
+          </span>
         </td>
         <td><%= product.width %></td>
-        <td class="text-right">
-          <i class="icon-edit"></i>
-          <%= link_to 'Rediger', edit_product_path(product) %>
+        <td class="text-center">
+          <%= link_to edit_product_path(product), class: 'btn btn-warning btn-xs' do %>
+            <i class="icon-edit"></i> Rediger
+          <% end %>
         </td>
-        <td class="text-right">
-          <i class="icon-remove"></i>
-          <%= link_to 'Slet', product, method: :delete, data: { confirm: 'Er du sikker?' } %>
+        <td class="text-center">
+          <%= link_to product, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
+            <i class="icon-remove"></i> Slet
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -42,4 +46,4 @@
 
 <br>
 
-<%= link_to 'Opret nyt produkt', new_product_path %>
+<%= link_to 'Opret nyt produkt', new_product_path, class: 'btn btn-link' %>

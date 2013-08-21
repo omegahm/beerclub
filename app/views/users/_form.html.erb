@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>
       <h1><%= title -%></h1>
@@ -16,19 +16,33 @@
       </div>
     <% end %>
 
-    <%= f.label :name, 'Navn' %><br>
-    <%= f.text_field :name %>
-    <br>
+    <div class="form-group">
+      <%= f.label :name, 'Navn', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.label :room, 'Værelse' %><br>
-    <%= f.text_field :room %>
-    <br>
+    <div class="form-group">
+      <%= f.label :room, 'Værelse', class: 'col-lg-2 control-label' %>
+      <div class="col-lg-10">
+        <%= f.text_field :room, class: 'form-control' %>
+      </div>
+    </div>
 
-    <%= f.label :visible, 'Synlig' %>
-    <%= f.check_box :visible %>
-    <br>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :visible %> Synlig
+          </label>
+        </div>
+      </div>
+    </div>
 
-    <%= f.submit title, class: 'btn btn-default' %>
-    <%= link_to 'Tilbage', users_path %>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit title, class: 'btn btn-default' %>
+        <%= link_to 'Tilbage', users_path, class: 'btn btn-link' %>
   </fieldset>
 <% end %>
