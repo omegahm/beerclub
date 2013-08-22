@@ -7,7 +7,7 @@
 <div id="graph-container"></div>
 
 <% content_for :scripts do %>
-  <script>
+  <%= javascript_tag do %>
     var chart, size;
     var oldWidth;
     var newWidth = <%= @bills.size * 100 -%>;
@@ -18,11 +18,15 @@
         if (toggleUp) {
           size = newWidth;
           oldWidth = chart.chartWidth;
+          $('#wrap > .container').animate({margin: 0}, 1000);
         } else {
           size = oldWidth
+          // Hack for now, as animate doens't allow margin: 'auto'
+          // $('#wrap > .container').animate({margin: 'auto'}, 1000);
+          $('#wrap > .container').css({margin: 'auto'});
         }
 
-        chart.setSize(size);
+        chart.setSize(size, chart.chartHeight, {duration: 1000});
 
         toggleUp = !toggleUp;
         $('.up, .down').toggleClass('hide');
@@ -81,5 +85,5 @@
           ]
       });
     });
-  </script>
+  <% end %>
 <% end %>
