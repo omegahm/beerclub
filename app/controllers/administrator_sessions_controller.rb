@@ -11,7 +11,7 @@ class AdministratorSessionsController < ApplicationController
 
     respond_to do |format|
       if @administrator_session.save
-        format.html { redirect_to administrators_path, notice: 'Du er nu logged ind.' }
+        format.html { redirect_to administrators_path, notice: 'Du er nu logget ind.' }
         format.json { render action: 'show', status: :created, location: @administrator_session }
       else
         format.html { render action: 'new' }

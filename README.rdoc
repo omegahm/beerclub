@@ -1,4 +1,5 @@
 {<img src="https://travis-ci.org/omegahm/beerclub.png?branch=master" alt="Build Status" />}[https://travis-ci.org/omegahm/beerclub]
+{<img src="https://codeclimate.com/github/omegahm/beerclub.png" />}[https://codeclimate.com/github/omegahm/beerclub]
 
 == KK400 Ølloge
 
@@ -16,7 +17,7 @@ The first administrator has to be made via the console. Other than that, each ad
 To create the first admin, simply run:
 
     Administrator.create(username: 'username', password: 'password', password_confirmation: 'password')
-    
+
 This can be any password, and the password can be changed in the UI afterwards.
 
 == License
