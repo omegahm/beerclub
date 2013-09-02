@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def require_administrator
     unless current_administrator.present?
-      redirect_to root_path, notice: 'Du skal være logged ind for at se denne side'
+      redirect_to root_path, notice: 'Du skal være logget ind for at se denne side'
     end
   end
 end
