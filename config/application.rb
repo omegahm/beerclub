@@ -19,15 +19,15 @@ module Beerclub
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :da
-    
+
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.version = '1.0'
 
-    # Needs to be false on Heroku 
+    # Needs to be false on Heroku
     config.serve_static_assets = false
     config.static_cache_control = "public, max-age=31536000"
-    
+
     # Add the fonts path
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
