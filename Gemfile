@@ -24,7 +24,6 @@ gem 'rack-timeout'
 gem 'rails-i18n'
 gem 'rails_12factor' # required by Heroku
 gem 'sass-rails'
-gem 'sentry-raven'
 gem 'uglifier'
 gem 'unicorn-rails'
 gem 'yui-compressor'
