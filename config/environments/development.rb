@@ -29,14 +29,4 @@ Beerclub::Application.configure do
   config.assets.compress = false
   config.assets.debug = true
   config.serve_static_assets = true
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.alert = true
-    Bullet.bullet_logger = false
-    Bullet.console = false
-    Bullet.growl = false
-    Bullet.rails_logger = true
-    Bullet.airbrake = false
-  end
 end

@@ -25,18 +25,17 @@ gem 'rails-i18n'
 gem 'rails_12factor' # required by Heroku
 gem 'sass-rails'
 gem 'uglifier'
-gem 'unicorn-rails'
 gem 'yui-compressor'
 
 group :production do
   gem 'justonedb'
+  gem 'unicorn-rails'
 end
 
 group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'bullet'
   gem 'hirb'
   gem 'lol_dba' # To find table in need of indexes run 'lol_dba db:find_indexes'
   gem 'mailcatcher'
