@@ -1,4 +1,5 @@
 class Payment < ActiveRecord::Base
+  ID = 0
   belongs_to :user
 
   validates :user_id, :amount, presence: true

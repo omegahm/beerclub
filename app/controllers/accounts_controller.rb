@@ -5,11 +5,9 @@ class AccountsController < ApplicationController
   def index
     @products = Product.visible.order(:id)
 
-    if params[:all]
-      @users = User.order_by_room
-    else
-      @users = User.visible.order_by_room
-    end
+    @users = User
+    @users = @users.visible unless params[:all]
+    @users = @users.order_by_room
   end
 
   # PATCH/PUT /accounts
@@ -22,30 +20,30 @@ class AccountsController < ApplicationController
     # Each user has one entry for each product which is uid_pid.
     # The user also have one with id_0, which is the amount paid
     # If a user has id 1, we need to look for all 1_'s in the params[:account] array
-    @product_prices = Product.select(:id, :price).inject({}) {|hash, p| hash[p.id] = p.price; hash}
+    product_prices = Product.select(:id, :price).inject({}) {|hash, p| hash[p.id] = p.price; hash}
 
-    @account = params[:account]
-
-    @account.each do |line|
+    params[:account].each do |line|
       user_id, product_id = line.first.split(/_/).map(&:to_i)
       hash = line.second.first
 
-      create_bill_or_payment(user_id, product_id, hash)
+      next if hash.has_key?(:amount) and hash[:amount].blank?
+      next if hash.has_key?(:quantity) and hash[:quantity].blank?
+      next unless product_id == Payment::ID or product_prices[product_id].present?
+
+      # Create worker and assign values
+      worker = AccountWorker.new
+      worker.user_id = user_id
+      worker.product_id = product_id
+      worker.hash = hash
+      worker.product_prices = product_prices
+
+      if Rails.env.production?
+        worker.queue
+      else
+        worker.run_local
+      end
     end
 
     redirect_to root_path, notice: 'Regnskab opdateret.'
-  end
-
-  private
-
-  def create_bill_or_payment(user_id, product_id, hash)
-    if product_id == 0
-      # Product id 0 is payments
-      Payment.create(user_id: user_id, amount: hash['amount'].to_f)
-    elsif @product_prices[product_id].present?
-      # It is able to add together values seperated with pluses (+)
-      sum = hash['quantity'].split(/\+/).map(&:to_i).sum
-      Bill.create(user_id: user_id, product_id: product_id, price: @product_prices[product_id], quantity: sum) if sum > 0
-    end
   end
 end

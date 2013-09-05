@@ -17,3 +17,5 @@
 
 # Ignore public assets
 /public/assets
+
+iron.json
