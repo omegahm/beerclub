@@ -31,11 +31,8 @@ class AccountsController < ApplicationController
       next unless product_id == Payment::ID or product_prices[product_id].present?
 
       # Create worker and assign values
-      worker = AccountWorker.new
-      worker.user_id = user_id
-      worker.product_id = product_id
-      worker.hash = hash
-      worker.product_prices = product_prices
+      worker = IronWorkerNG::Client.new
+      worker.tasks.create("account", { user_id: user_id, product_id: product_id, hash: hash, database: Rails.configuration.database_configuration })
 
       if Rails.env.production?
         worker.queue
