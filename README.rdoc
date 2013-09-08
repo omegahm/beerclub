@@ -12,6 +12,10 @@ Other than that, an admin can create new products, new users, new admins (with s
 
 Some graphs are available, with each product for each user plotted against time. Highcharts (r) are used here, to provide an easy way to do this.
 
+== IronWorker
+
+When updating an account all the actual updating is given to an IronWorker[http://iron.io]. This is done because we might create as many as 5 bills and a payment for each user when updating an account.
+
 == Caveats
 
 The first administrator has to be made via the console. Other than that, each admin is able to create new admins with the same privileges (all admins have the same privileges)
