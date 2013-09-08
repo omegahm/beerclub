@@ -8,7 +8,7 @@ describe HomeController do
     @product1 = FactoryGirl.create(:product)
     @product2 = FactoryGirl.create(:product)
     @product3 = FactoryGirl.create(:product, visible: false)
-    FactoryGirl.create(:bill, :user => @user1, :product => @product1)
+    FactoryGirl.create(:bill, user: @user1, product: @product1)
   end
 
   describe "GET index" do

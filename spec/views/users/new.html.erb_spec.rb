@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "users/new" do
   before(:each) do
     assign(:user, stub_model(User,
-      :name => "MyString",
-      :room => "MyString"
+      name: "MyString",
+      room: "MyString"
     ).as_new_record)
   end
 

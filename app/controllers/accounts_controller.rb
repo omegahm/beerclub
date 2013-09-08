@@ -22,6 +22,10 @@ class AccountsController < ApplicationController
       worker.run_local
     end
 
-    redirect_to root_path, notice: 'Regnskab opdateret.'
+    flash[:notice] = "Regnskab opdateret"
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { render json: { url: root_url } }
+    end
   end
 end

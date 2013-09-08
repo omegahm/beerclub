@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "users/edit" do
   before(:each) do
     @user = assign(:user, stub_model(User,
-      :name => "MyString",
-      :room => "MyString"
+      name: "MyString",
+      room: "MyString"
     ))
   end
 

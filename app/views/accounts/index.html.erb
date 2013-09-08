@@ -9,7 +9,7 @@
 <% end %>
 <br><br>
 
-<%= form_tag update_accounts_path, :method => :patch do %>
+<%= form_tag update_accounts_path, method: :patch, id: "account-form" do %>
   <table class="table table-condensed table-bordered table-striped">
     <thead>
       <tr>
@@ -47,5 +47,8 @@
   <p class="pull-right">
     <%= submit_tag 'Overfør regnskab', class: 'btn btn-success btn-sm', data: { confirm: 'Er du sikker på at du vil køre regnskabet?' } %>
   </p>
+<% end %>
+
+<% content_for :scipts do %>
 
 <% end %>

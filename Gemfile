@@ -22,7 +22,6 @@ gem 'prawn', '>= 1.0.0.rc2'
 gem 'prawn_rails'
 gem 'rack-timeout'
 gem 'rails-i18n'
-gem 'rails_12factor' # required by Heroku
 gem 'sass-rails'
 gem 'uglifier'
 gem 'yui-compressor'
@@ -30,6 +29,7 @@ gem 'yui-compressor'
 group :production do
   gem 'justonedb'
   gem 'passenger'
+  gem 'rails_12factor' # required by Heroku
 end
 
 group :development do

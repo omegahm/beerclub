@@ -49,8 +49,8 @@ class HomeController < ApplicationController
 
       # We need all users and all products, not only visible ones
       @totals = {}
-      User.all.each do |user|
-        Product.all.each do |product|
+      User.find_each do |user|
+        @products.each do |product|
           @totals[product.id] ||= 0
           @totals[product.id] += (@quantities[[user.id, product.id]].presence || 0)
         end

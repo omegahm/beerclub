@@ -12,11 +12,11 @@ describe MetaController do
     end
 
     it "routes to #show" do
-      get("/meta/1").should route_to("meta#show", :id => "1")
+      get("/meta/1").should route_to("meta#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/meta/1/edit").should route_to("meta#edit", :id => "1")
+      get("/meta/1/edit").should route_to("meta#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe MetaController do
     end
 
     it "routes to #update" do
-      put("/meta/1").should route_to("meta#update", :id => "1")
+      put("/meta/1").should route_to("meta#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/meta/1").should route_to("meta#destroy", :id => "1")
+      delete("/meta/1").should route_to("meta#destroy", id: "1")
     end
 
   end
