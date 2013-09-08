@@ -1,12 +1,14 @@
-require 'justonedb'
 require 'active_record'
-require 'models/payment'
-require 'models/bill'
+require 'pg'
+
+require './payment'
+require './bill'
 
 ActiveRecord::Base.establish_connection(params['database'])
 
 user_id = params[:user_id]
 product_id = params[:product_id]
+product_prices = params[:product_prices]
 hash = params[:hash]
 
 # Payments have a special ID

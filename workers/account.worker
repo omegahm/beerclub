@@ -1,0 +1,10 @@
+remote
+runtime "ruby"
+exec "account_worker.rb"
+
+file '../app/models/payment.rb'
+file '../app/models/bill.rb'
+
+gem 'pg'
+gem 'activerecord'
+gem 'atomic'

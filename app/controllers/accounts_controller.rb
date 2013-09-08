@@ -32,7 +32,7 @@ class AccountsController < ApplicationController
 
       # Create worker and assign values
       worker = IronWorkerNG::Client.new
-      worker.tasks.create("account", { user_id: user_id, product_id: product_id, hash: hash, database: Rails.configuration.database_configuration })
+      worker.tasks.create("account", { user_id: user_id, product_id: product_id, product_prices: product_prices, hash: hash, database: Rails.configuration.database_configuration[Rails.env] })
 
       if Rails.env.production?
         worker.queue
