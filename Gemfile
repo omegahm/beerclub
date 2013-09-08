@@ -20,7 +20,6 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'prawn', '>= 1.0.0.rc2'
 gem 'prawn_rails'
-gem 'rack-mini-profiler', require: 'rack-mini-profiler'
 gem 'rack-timeout'
 gem 'rails-i18n'
 gem 'rails_12factor' # required by Heroku
@@ -30,7 +29,7 @@ gem 'yui-compressor'
 
 group :production do
   gem 'justonedb'
-  gem 'unicorn-rails'
+  gem 'passenger'
 end
 
 group :development do
