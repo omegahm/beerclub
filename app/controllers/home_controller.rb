@@ -38,31 +38,32 @@ class HomeController < ApplicationController
   end
 
   private
-    def load_data
-      @users = User.order_by_room
-      @products = Product.order(:created_at)
 
-      @payments = Payment.group(:user_id).sum(:amount)
-      bill_scope = Bill.joins(:user).group(:user_id)
-      @quantities = bill_scope.group(:product_id).sum(:quantity)
-      @balances = bill_scope.sum("bills.quantity * -bills.price")
+  def load_data
+    @users = User.order_by_room
+    @products = Product.order(:created_at)
 
-      # We need all users and all products, not only visible ones
-      @totals = {}
-      User.find_each do |user|
-        @products.each do |product|
-          @totals[product.id] ||= 0
-          @totals[product.id] += (@quantities[[user.id, product.id]].presence || 0)
-        end
+    @payments = Payment.group(:user_id).sum(:amount)
+    bill_scope = Bill.joins(:user).group(:user_id)
+    @quantities = bill_scope.group(:product_id).sum(:quantity)
+    @balances = bill_scope.sum("bills.quantity * -bills.price")
+
+    # We need all users and all products, not only visible ones
+    @totals = {}
+    User.find_each do |user|
+      @products.each do |product|
+        @totals[product.id] ||= 0
+        @totals[product.id] += (@quantities[[user.id, product.id]].presence || 0)
       end
-
-      @sales_last_month = Bill.group("date_trunc('day', created_at)").order("date_trunc_day_created_at DESC").sum("price * quantity").first.try(:second).try(:to_f)
-      @last_month_meta = Metum.last_month
-      @last_bil = Bill.last.created_at
     end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+    @sales_last_month = Bill.group("date_trunc('day', created_at)").order("date_trunc_day_created_at DESC").sum("price * quantity").first.try(:second).try(:to_f)
+    @last_month_meta = Metum.last_month
+    @last_bil = Bill.last.created_at
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end

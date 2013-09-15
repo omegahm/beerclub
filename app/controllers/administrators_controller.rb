@@ -3,7 +3,6 @@ class AdministratorsController < ApplicationController
   before_action :set_administrator, only: [:edit, :update, :destroy]
 
   # GET /administrators
-  # GET /administrators.json
   def index
     @administrators = Administrator.all
   end
@@ -18,43 +17,29 @@ class AdministratorsController < ApplicationController
   end
 
   # POST /administrators
-  # POST /administrators.json
   def create
     @administrator = Administrator.new(administrator_params)
 
-    respond_to do |format|
-      if @administrator.save
-        format.html { redirect_to administrators_path, notice: 'Administratoren blev oprettet.' }
-        format.json { render action: 'show', status: :created, location: @administrator }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @administrator.errors, status: :unprocessable_entity }
-      end
+    if @administrator.save
+      redirect_to administrators_path, notice: 'Administratoren blev oprettet.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /administrators/1
-  # PATCH/PUT /administrators/1.json
   def update
-    respond_to do |format|
-      if @administrator.update(administrator_params)
-        format.html { redirect_to administrators_path, notice: 'Administratoren blev opdateret.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @administrator.errors, status: :unprocessable_entity }
-      end
+    if @administrator.update(administrator_params)
+      redirect_to administrators_path, notice: 'Administratoren blev opdateret.'
+    else
+      render action: 'edit'
     end
   end
 
   # DELETE /administrators/1
-  # DELETE /administrators/1.json
   def destroy
     @administrator.destroy
-    respond_to do |format|
-      format.html { redirect_to administrators_url }
-      format.json { head :no_content }
-    end
+    redirect_to administrators_url
   end
 
   private

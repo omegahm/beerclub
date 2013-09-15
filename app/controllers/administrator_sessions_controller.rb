@@ -5,31 +5,22 @@ class AdministratorSessionsController < ApplicationController
   end
 
   # POST /administrator_sessions
-  # POST /administrator_sessions.json
   def create
     @administrator_session = AdministratorSession.new(administrator_session_params)
 
-    respond_to do |format|
-      if @administrator_session.save
-        format.html { redirect_to administrators_path, notice: 'Du er nu logget ind.' }
-        format.json { render action: 'show', status: :created, location: @administrator_session }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @administrator_session.errors, status: :unprocessable_entity }
-      end
+    if @administrator_session.save
+      redirect_to administrators_path, notice: 'Du er nu logget ind.'
+    else
+      render action: 'new'
     end
   end
 
   # DELETE /administrator_sessions/1
-  # DELETE /administrator_sessions/1.json
   def destroy
     @administrator_session = AdministratorSession.find
     @administrator_session.destroy
 
-    respond_to do |format|
-      format.html { redirect_to administrators_path, notice: 'På gensyn!' }
-      format.json { head :no_content }
-    end
+    redirect_to administrators_path, notice: 'På gensyn!'
   end
 
   private
