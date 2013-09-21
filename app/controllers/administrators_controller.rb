@@ -42,6 +42,10 @@ class AdministratorsController < ApplicationController
     redirect_to administrators_url
   end
 
+  def error
+    raise "Error"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_administrator

@@ -80,4 +80,8 @@ Beerclub::Application.configure do
 
   # Google Cloud Storage
   config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.storage.googleapis.com"
+
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 end

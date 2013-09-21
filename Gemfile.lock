@@ -85,6 +85,9 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     excon (0.25.3)
     execjs (2.0.1)
     factory_girl (4.2.0)
@@ -315,6 +318,7 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails
   dalli
+  exception_notification
   factory_girl_rails
   font-awesome-rails
   fuubar
