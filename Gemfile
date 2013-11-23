@@ -25,6 +25,7 @@ gem 'rack-timeout'
 gem 'rails-i18n'
 gem 'sass-rails'
 gem 'uglifier'
+gem 'unf'
 gem 'yui-compressor'
 
 group :production do
