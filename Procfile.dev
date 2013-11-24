@@ -1,0 +1,3 @@
+web: thin -R config.ru -p 3000 -t 60 start
+db: postgres -D ../postgresql
+memcache: memcached -p 11211

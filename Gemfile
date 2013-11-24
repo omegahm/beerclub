@@ -39,6 +39,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'foreman'
   gem 'hirb'
   gem 'lol_dba' # To find table in need of indexes run 'lol_dba db:find_indexes'
   gem 'mailcatcher'

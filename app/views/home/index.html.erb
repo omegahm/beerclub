@@ -3,8 +3,8 @@
     KK400 Ølloge&trade;!
     <small>
       Grafer, tabeller og statistik
-      <i class="icon-beer"></i>
-      <i class="icon-heart"></i>
+      <i class="fa fa-beer"></i>
+      <i class="fa fa-heart"></i>
     </small>
   </h1>
 </div>
@@ -15,8 +15,8 @@
       <th>
         Navn
         <span class="pull-right label label-success">
-          <a class="show-old-users icon-eye-open"></a>
-          <a class="hide-old-users icon-eye-close hide"></a>
+          <a class="show-old-users fa fa-eye"></a>
+          <a class="hide-old-users fa fa-eye-slash hide"></a>
         </span>
       </th>
       <th>Værelse</th>
@@ -25,7 +25,7 @@
           <%= product.name %>
           <span class="pull-right">
             <%= link_to graph_path(product.id), class: 'graph label label-success' do %>
-              <i class="icon-bar-chart"></i>
+              <i class="fa fa-bar-chart-o"></i>
             <% end %>
           </span>
         </th>
@@ -54,8 +54,8 @@
       <th>
         Total
         <span class="pull-right label label-success">
-          <a class="show-old-users icon-eye-open"></a>
-          <a class="hide-old-users icon-eye-close hide"></a>
+          <a class="show-old-users fa fa-eye"></a>
+          <a class="hide-old-users fa fa-eye-slash hide"></a>
         </span>
       </th>
       <th></th>
@@ -84,27 +84,27 @@
     <table class="table table-bordered table-striped table-condensed">
       <tbody>
         <tr>
-          <td><i class="icon-legal"></i> Salg sidste måned</td>
+          <td><i class="fa fa-legal"></i> Salg sidste måned</td>
           <td class="text-right"><%= number_to_colored_currency @sales_last_month %></td>
         </tr>
 
         <tr>
-          <td><i class="icon-usd"></i> Kontant</td>
+          <td><i class="fa fa-usd"></i> Kontant</td>
           <td class="text-right"><%= number_to_colored_currency @last_month_meta[:cash] %></td>
         </tr>
 
         <tr>
-          <td><i class="icon-frown"></i> Svind</td>
+          <td><i class="fa fa-frown-o"></i> Svind</td>
           <td class="text-right"><%= number_to_colored_currency @last_month_meta[:loss] %></td>
         </tr>
 
         <tr>
-          <td><i class="icon-dashboard"></i> Ølbeholdning</td>
+          <td><i class="fa fa-dashboard"></i> Ølbeholdning</td>
           <td class="text-right"><%= number_to_colored_currency @last_month_meta[:stock] %></td>
         </tr>
 
         <tr>
-          <th><i class="icon-money"></i> Penge i alt</th>
+          <th><i class="fa fa-money"></i> Penge i alt</th>
           <th class="text-right"><%= number_to_colored_currency -total_balance + @last_month_meta[:stock] + @last_month_meta[:cash] %></th>
         </tr>
       </tbody>

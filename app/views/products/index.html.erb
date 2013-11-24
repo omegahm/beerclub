@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><i class="icon-glass"></i> Produkter</h1>
+  <h1><i class="fa fa-glass"></i> Produkter</h1>
 </div>
 
 <table class="table table-condensed table-bordered table-striped">
@@ -21,18 +21,18 @@
         <td><%= number_to_currency product.price %></td>
         <td>
           <span class="label label-<%= product.visible ? 'success' : 'danger' -%>">
-            <i class="icon-check<%= product.visible ? '' : '-empty' -%>"></i>
+            <i class="fa fa-check<%= product.visible ? '' : '-empty' -%>"></i>
           </span>
         </td>
         <td><%= product.width %></td>
         <td class="text-center">
           <%= link_to edit_product_path(product), class: 'btn btn-warning btn-xs' do %>
-            <i class="icon-edit"></i> Rediger
+            <i class="fa fa-edit"></i> Rediger
           <% end %>
         </td>
         <td class="text-center">
           <%= link_to product, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
-            <i class="icon-remove"></i> Slet
+            <i class="fa fa-flash"></i> Slet
           <% end %>
         </td>
       </tr>

@@ -59,7 +59,7 @@ class HomeController < ApplicationController
 
     @sales_last_month = Bill.group("date_trunc('day', created_at)").order("date_trunc_day_created_at DESC").sum("price * quantity").first.try(:second).try(:to_f)
     @last_month_meta = Metum.last_month
-    @last_bil = Bill.last.created_at
+    @last_bil = Bill.last.try(&:created_at) || Date.today
   end
 
   # Use callbacks to share common setup or constraints between actions.

@@ -3,9 +3,9 @@
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="fa fa-bar"></span>
+        <span class="fa fa-bar"></span>
+        <span class="fa fa-bar"></span>
       </button>
 
       <%= link_to 'KK400 Ølloge&trade;'.html_safe, root_path, class: 'navbar-brand' %>
@@ -15,12 +15,12 @@
       <ul class="nav navbar-nav">
         <li class="active">
           <%= link_to root_path do -%>
-            <i class="icon-home"></i> Hjem
+            <i class="fa fa-home"></i> Hjem
           <% end %>
         </li>
         <li>
           <%= link_to print_path(format: :pdf) do %>
-            <i class="icon-print"></i> Print
+            <i class="fa fa-print"></i> Print
           <% end %>
         </li>
       </ul>
@@ -30,19 +30,19 @@
             <ul class="nav navbar-nav pull-right">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="icon-unlock-alt"></i>
+                  <i class="fa fa-unlock-alt"></i>
                   <%= current_administrator.username -%>
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
                     <%= link_to administrators_path do -%>
-                      <i class="icon-eye-open"></i> Administratorer
+                      <i class="fa fa-eye"></i> Administratorer
                     <% end %>
                   <li>
                   <li>
                     <%= link_to users_path do -%>
-                      <i class="icon-group"></i> Brugere
+                      <i class="fa fa-group"></i> Brugere
                     <% end %>
                   <li>
 
@@ -50,17 +50,17 @@
 
                   <li>
                     <%= link_to products_path do -%>
-                      <i class="icon-glass"></i> Produkter
+                      <i class="fa fa-glass"></i> Produkter
                     <% end %>
                   </li>
                   <li>
                     <%= link_to accounts_path do -%>
-                      <i class="icon-beer"></i> Regnskab
+                      <i class="fa fa-beer"></i> Regnskab
                     <% end %>
                   </li>
                   <li>
                     <%= link_to meta_path do -%>
-                      <i class="icon-cogs"></i> Meta
+                      <i class="fa fa-cogs"></i> Meta
                     <% end %>
                   </li>
 
@@ -68,7 +68,7 @@
 
                   <li>
                     <%= link_to logout_path do -%>
-                      <i class="icon-power-off"></i> Log ud
+                      <i class="fa fa-power-off"></i> Log ud
                     <% end %>
                   </li>
                 </ul>
@@ -76,7 +76,7 @@
             </ul>
           <% else %>
             <%= link_to login_path do -%>
-              <i class="icon-lock"></i> Log ind
+              <i class="fa fa-lock"></i> Log ind
             <% end %>
           <% end %>
         </li>
