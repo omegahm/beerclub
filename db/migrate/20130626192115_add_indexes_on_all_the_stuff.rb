@@ -5,11 +5,11 @@ class AddIndexesOnAllTheStuff < ActiveRecord::Migration
     add_index :users, :room
     add_index :users, :visible
     add_index :users, :created_at
-    
+
     add_index :products, :name
     add_index :products, :visible
     add_index :products, :created_at
-    
+
     add_index :bills, :user_id
     add_index :bills, :product_id
     add_index :bills, :created_at

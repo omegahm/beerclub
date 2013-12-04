@@ -16,15 +16,18 @@ ActiveRecord::Base.establish_connection(params['database'])
 # The user also have one with id_0, which is the amount paid
 # If a user has id 1, we need to look for all 1_'s in the params[:account] array
 
-product_prices = Product.select(:id, :price).inject({}) {|hash, p| hash[p.id] = p.price; hash}
+product_prices = Product.select(:id, :price).reduce({}) do |hash, p|
+  hash[p.id] = p.price
+  hash
+end
 
 params[:account].each do |line|
   user_id, product_id = line.first.split(/_/).map(&:to_i)
   hash = line.second.first
 
-  next if hash.has_key?(:amount) and hash[:amount].blank?
-  next if hash.has_key?(:quantity) and hash[:quantity].blank?
-  next unless product_id == Payment::ID or product_prices[product_id].present?
+  next if hash.key?(:amount) && hash[:amount].blank?
+  next if hash.key?(:quantity) && hash[:quantity].blank?
+  next unless product_id == Payment::ID || product_prices[product_id].present?
 
   puts "Running #{user_id}, #{product_id}"
 

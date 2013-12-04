@@ -11,7 +11,7 @@ Beerclub::Application.routes.draw do
   get 'login' => 'administrator_sessions#new'
   get 'logout' => 'administrator_sessions#destroy'
 
-  get 'print' => 'home#account', constraints: {format: :pdf}
+  get 'print' => 'home#account', constraints: { format: :pdf }
   get 'graph/:id' => 'home#graph', as: :graph
 
   get 'error' => 'administrators#error'

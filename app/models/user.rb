@@ -11,14 +11,15 @@ class User < ActiveRecord::Base
   scope :visible, -> { where(visible: true) }
 
   # Order by room with 400 coming first, after that every other 3 digit, and then 4 digits and above
-  scope :order_by_room,
-    -> { order("visible DESC, CASE substring(users.room for 1)
-                WHEN '4' THEN users.room
-                ELSE (lpad(lpad(users.room, 10, '0'), 20, 'z'))
-                END") }
+  scope :order_by_room, lambda {
+    order("visible DESC, CASE substring(users.room for 1)
+                         WHEN '4' THEN users.room
+                         ELSE (lpad(lpad(users.room, 10, '0'), 20, 'z'))
+                         END")
+  }
 
   def create_deposit_fee
-    Payment.create(user_id: self.id, amount: -DEPOSIT_FEE)
+    Payment.create(user_id: id, amount: -DEPOSIT_FEE)
   end
 end
 
@@ -34,4 +35,3 @@ end
 #  visible    :boolean          default(TRUE)
 #  temp_id    :integer
 #
-

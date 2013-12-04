@@ -26,7 +26,7 @@ module Beerclub
 
     # Needs to be false on Heroku
     config.serve_static_assets = false
-    config.static_cache_control = "public, max-age=31536000"
+    config.static_cache_control = 'public, max-age=31536000'
 
     # Add the fonts path
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')

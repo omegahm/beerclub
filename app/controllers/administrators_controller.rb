@@ -43,10 +43,11 @@ class AdministratorsController < ApplicationController
   end
 
   def error
-    raise "Error"
+    fail 'Error'
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_administrator
       @administrator = Administrator.find(params[:id])

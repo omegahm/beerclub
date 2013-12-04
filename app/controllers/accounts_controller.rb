@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
   def update
     # Create worker and assign values
     worker = IronWorkerNG::Client.new
-    worker.tasks.create("account", { account: params[:account], database: Rails.configuration.database_configuration[Rails.env] })
+    worker.tasks.create('account', account: params[:account], database: Rails.configuration.database_configuration[Rails.env])
 
     if Rails.env.production?
       worker.queue
@@ -22,7 +22,7 @@ class AccountsController < ApplicationController
       worker.run_local
     end
 
-    flash[:notice] = "Regnskab opdateret"
+    flash[:notice] = 'Regnskab opdateret'
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { render json: { url: root_url } }
