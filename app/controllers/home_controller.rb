@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   # GET /graph/:id
   def graph
     # Gives [user_id, date] => quantity
-    @product_counts = Bill.where('product_id = ?', @product.id).group('bills.user_id').group("date_trunc('day', bills.created_at)").order('date_trunc_day_bills_created_at').sum('quantity')
+    @product_counts = Bill.where('product_id = ?', @product.id).group('bills.user_id').group("EXTRACT(DAY FROM bills.created_at)").order('EXTRACT(DAY FROM bills.created_at)').sum('quantity')
 
     # We want user_id => [{ date => quanity }, { date2 => quantity2 }]
     @bills = {}
@@ -57,7 +57,7 @@ class HomeController < ApplicationController
       end
     end
 
-    @sales_last_month = Bill.group("date_trunc('day', created_at)").order('date_trunc_day_created_at DESC').sum('price * quantity').first.try(:second).try(:to_f)
+    @sales_last_month = Bill.group("EXTRACT(DAY FROM created_at)").order('EXTRACT(DAY FROM bills.created_at) DESC').sum('price * quantity').first.try(:second).try(:to_f)
     @last_month_meta = Metum.last_month
     @last_bil = Bill.last.try(&:created_at) || Date.today
   end
