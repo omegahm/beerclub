@@ -19,7 +19,7 @@
         <td><%= user.room %></td>
         <td>
           <span class="label label-<%= user.visible ? 'success' : 'danger' -%>">
-            <i class="fa fa-check<%= user.visible ? '' : '-empty' -%>"></i>
+            <i class="fa fa-<%= user.visible ? 'check-' : '' -%>square-o"></i>
           </span>
         </td>
         <td class="text-center">

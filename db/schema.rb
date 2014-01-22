@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822051208) do
+ActiveRecord::Schema.define(version: 20140122202613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20130822051208) do
     t.boolean  "visible",    default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "temp_id"
     t.integer  "width",      default: 130
   end
 
@@ -75,7 +74,6 @@ ActiveRecord::Schema.define(version: 20130822051208) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "visible",    default: true
-    t.integer  "temp_id"
   end
 
   add_index "users", ["created_at"], name: "index_users_on_created_at", using: :btree

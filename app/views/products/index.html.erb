@@ -21,7 +21,7 @@
         <td><%= number_to_currency product.price %></td>
         <td>
           <span class="label label-<%= product.visible ? 'success' : 'danger' -%>">
-            <i class="fa fa-check<%= product.visible ? '' : '-empty' -%>"></i>
+            <i class="fa fa-<%= product.visible ? 'check-' : '' -%>square-o"></i>
           </span>
         </td>
         <td><%= product.width %></td>
