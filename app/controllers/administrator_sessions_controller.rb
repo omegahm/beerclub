@@ -25,8 +25,8 @@ class AdministratorSessionsController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def administrator_session_params
-      params.require(:administrator_session).permit(:username, :password)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def administrator_session_params
+    params.require(:administrator_session).permit(:username, :password)
+  end
 end

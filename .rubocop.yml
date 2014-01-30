@@ -1,0 +1,10 @@
+AllCops:
+  Excludes:
+    - db/schema.rb
+    - db/migrate/*.rb
+
+LineLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false

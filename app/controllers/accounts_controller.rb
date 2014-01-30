@@ -12,9 +12,7 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /accounts
   def update
-    # Create worker and assign values
-    worker = IronWorkerNG::Client.new
-    worker.tasks.create('account', account: params[:account], database: Rails.configuration.database_configuration[Rails.env])
+    worker = create_worker(params)
 
     if Rails.env.production?
       worker.queue
@@ -23,9 +21,15 @@ class AccountsController < ApplicationController
     end
 
     flash[:notice] = 'Regnskab opdateret'
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js { render json: { url: root_url } }
-    end
+    redirect_to root_path
+  end
+
+  private
+
+  def create_worker(params)
+    # Create worker and assign values
+    worker = IronWorkerNG::Client.new
+    worker.tasks.create('account', account: params[:account], database: Rails.configuration.database_configuration[Rails.env])
+    worker
   end
 end
