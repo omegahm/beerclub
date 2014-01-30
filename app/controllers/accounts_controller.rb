@@ -14,14 +14,14 @@ class AccountsController < ApplicationController
   def update
     worker = create_worker(params)
 
-    if Rails.env.production?
-      worker.queue
-    else
-      worker.run_local
-    end
+    worker.queue if Rails.env.production?
+    worker.run_local unless Rails.env.production?
 
     flash[:notice] = 'Regnskab opdateret'
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { render json: { url: root_url } }
+    end
   end
 
   private
