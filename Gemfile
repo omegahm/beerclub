@@ -14,7 +14,6 @@ gem 'exception_notification'
 gem 'font-awesome-rails'
 gem 'highcharts-rails'
 gem 'iron_worker_ng'
-gem 'jbuilder'
 gem 'jquery-rails'
 gem 'memcachier'
 gem 'newrelic_rpm'
@@ -49,6 +48,7 @@ group :development do
   gem 'pry'
   gem 'quiet_assets'
   gem 'rubocop'
+  gem 'thin'
 end
 
 group :test do
