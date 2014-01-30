@@ -18,6 +18,7 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'memcachier'
 gem 'newrelic_rpm'
+gem 'passenger'
 gem 'prawn', '>= 1.0.0.rc2'
 gem 'prawn_rails'
 gem 'rack-timeout'
@@ -29,7 +30,6 @@ gem 'yui-compressor'
 
 group :production do
   gem 'mysql2'
-  gem 'passenger'
   gem 'rails_12factor' # required by Heroku
 end
 
