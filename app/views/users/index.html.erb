@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><i class="fa fa-group"></i> Brugere</h1>
+  <h1><%= fa_icon 'group', text: 'Brugere' %></h1>
 </div>
 
 <table class="table table-condensed table-bordered table-striped">
@@ -24,12 +24,12 @@
         </td>
         <td class="text-center">
           <%= link_to edit_user_path(user), class: 'btn btn-warning btn-xs' do %>
-           <i class="fa fa-edit"></i> Rediger
+           <%= fa_icon 'edit', text: 'Rediger' %>
           <% end %>
         </td>
         <td class="text-center">
           <%= link_to user, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
-            <i class="fa fa-flash"></i> Slet
+            <%= fa_icon 'flash', text: 'Slet' %>
           <% end %>
         </td>
       </tr>

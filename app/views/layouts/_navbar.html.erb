@@ -15,12 +15,12 @@
       <ul class="nav navbar-nav">
         <li class="active">
           <%= link_to root_path do -%>
-            <i class="fa fa-home"></i> Hjem
+            <%= fa_icon 'home', text: 'Hjem' %>
           <% end %>
         </li>
         <li>
           <%= link_to print_path(format: :pdf) do %>
-            <i class="fa fa-print"></i> Print
+            <%= fa_icon 'print', text: 'Print' %>
           <% end %>
         </li>
       </ul>
@@ -37,12 +37,12 @@
                 <ul class="dropdown-menu">
                   <li>
                     <%= link_to administrators_path do -%>
-                      <i class="fa fa-eye"></i> Administratorer
+                      <%= fa_icon 'eye', text: 'Administratorer' %>
                     <% end %>
                   <li>
                   <li>
                     <%= link_to users_path do -%>
-                      <i class="fa fa-group"></i> Brugere
+                      <%= fa_icon 'group', text: 'Brugere' %>
                     <% end %>
                   <li>
 
@@ -50,17 +50,17 @@
 
                   <li>
                     <%= link_to products_path do -%>
-                      <i class="fa fa-glass"></i> Produkter
+                      <%= fa_icon 'glass', text: 'Produkter' %>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to accounts_path do -%>
-                      <i class="fa fa-beer"></i> Regnskab
+                      <%= fa_icon 'beer', text: 'Regnskab' %>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to meta_path do -%>
-                      <i class="fa fa-cogs"></i> Meta
+                      <%= fa_icon 'cogs', text: 'Meta' %>
                     <% end %>
                   </li>
 
@@ -68,7 +68,7 @@
 
                   <li>
                     <%= link_to logout_path do -%>
-                      <i class="fa fa-power-off"></i> Log ud
+                      <%= fa_icon 'power-off', text: 'Log ud' %>
                     <% end %>
                   </li>
                 </ul>
@@ -76,7 +76,7 @@
             </ul>
           <% else %>
             <%= link_to login_path do -%>
-              <i class="fa fa-lock"></i> Log ind
+              <%= fa_icon 'lock', text: 'Log ind' %>
             <% end %>
           <% end %>
         </li>

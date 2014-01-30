@@ -84,27 +84,27 @@
     <table class="table table-bordered table-striped table-condensed">
       <tbody>
         <tr>
-          <td><i class="fa fa-legal"></i> Salg sidste måned</td>
+          <td><%= fa_icon 'legal', text: 'Salg sidste måned' %></td>
           <td class="text-right"><%= number_to_colored_currency @sales_last_month %></td>
         </tr>
 
         <tr>
-          <td><i class="fa fa-usd"></i> Kontant</td>
+          <td><%= fa_icon 'usd', text: 'Kontant' %></td>
           <td class="text-right"><%= number_to_colored_currency @last_month_meta[:cash] %></td>
         </tr>
 
         <tr>
-          <td><i class="fa fa-frown-o"></i> Svind</td>
+          <td><%= fa_icon 'frown-o', text: 'Svind' %></td>
           <td class="text-right"><%= number_to_colored_currency @last_month_meta[:loss] %></td>
         </tr>
 
         <tr>
-          <td><i class="fa fa-dashboard"></i> Ølbeholdning</td>
+          <td><%= fa_icon 'dashboard', text: 'Ølbeholdning' %></td>
           <td class="text-right"><%= number_to_colored_currency @last_month_meta[:stock] %></td>
         </tr>
 
         <tr>
-          <th><i class="fa fa-money"></i> Penge i alt</th>
+          <th><%= fa_icon 'money', text: 'Penge i alt' %></th>
           <th class="text-right"><%= number_to_colored_currency -total_balance + @last_month_meta[:stock] + @last_month_meta[:cash] %></th>
         </tr>
       </tbody>
