@@ -1,23 +1,30 @@
 $ ->
-  $("#account-form").on "submit", (event) ->
+  $('input[type=text]').on 'keypress', (event) ->
+    self = $(this)
+
+    if event.which is 13
+      event.preventDefault()
+      self.val eval(self.val())
+
+  $('#account-form').on 'submit', (event) ->
     event.preventDefault()
 
-    $("input[name='commit']").attr({
-      "value": "Arbejder..."
-      "disabled": "disabled"
+    $('input[name=commit]').attr({
+      'value': 'Arbejder...'
+      'disabled': 'disabled'
     })
 
     data = $(@).serializeArray().filter (element) ->
-      return element.value != ""
+      return element.value != ''
 
     $.ajax
-      type: "POST"
-      url: $(@).attr("action"),
+      type: 'POST'
+      url: $(@).attr('action'),
       data: $(@).serialize()
-      dataType: "json"
+      dataType: 'json'
       success: (data) ->
         window.location.href = data.url
         true
-    , "script"
+    , 'script'
 
     false
