@@ -6,9 +6,6 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
   # |   |           |   |
   # ---------------------
 
-  total_paid = @payments.inject(0) {|sum, b| sum += b.second}
-  total_balance = (@balances.inject(0) {|sum, b| sum += b.second} + total_paid)
-
   pdf.font_size 15
   pdf.move_up 20
   pdf.text 'Køkken 400 Ølloge', align: :center
@@ -24,7 +21,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
 
            [
              { content: 'Indbetalt' },
-             { content: 'Balance', width: 70}
+             { content: 'Balance', width: 70 }
           ]
          ]
 
@@ -43,7 +40,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
 
     # Balance
     num = (@balances[user.id].presence || 0) + (@payments[user.id].presence || 0)
-    user_data << { content: number_to_currency(num), align: :left, text_color: (num > 0 ? '00CC00' : 'CC0000') }
+    user_data << { content: number_to_currency(num), align: :right, text_color: (num > 0 ? '00CC00' : 'CC0000') }
 
     data << user_data
   end
@@ -60,38 +57,36 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
 
   [
     { content: '', border_lines: [:dashed, :solid, :solid, :solid]},
-    { content: number_to_currency(total_balance), align: :center, font_style: :bold, border_lines: [:dashed, :solid, :solid, :solid] }
+    { content: number_to_currency(@total_balance), align: :right, font_style: :bold, border_lines: [:dashed, :solid, :solid, :solid] }
   ]
 
   # Main table
   pdf.table data, width: pdf.bounds.width, cell_style: { height: 12, padding: [0, 5, 0, 5] } do
     # Bold header
-    row(0).background_color = 'FFD700'
     row(0).font_style = :bold
     row(0).align = :center
 
     # Alternating colors
     cells.style do |c|
       if c.row == 0
-        c.background_color = 'FFD700'
+        c.background_color = 'F0AD4E'
       elsif c.row % 2 == 0
-        c.background_color = 'D7D7D7'
+        c.background_color = 'e9e9e9'
       else
-        c.background_color = 'FFFFFF'
+        c.background_color = 'ffffff'
       end
     end
   end
 
   pdf.move_down 10
-  products_data = @products.inject([]) {|arr, p| arr << [p.name, { content: number_to_currency(p.price), align: :right }]; arr }
-  pdf.table products_data, cell_style: { height: 12, padding: [0, 5, 0, 5] }
+  pdf.table @products_data, cell_style: { height: 12, padding: [0, 5, 0, 5] }
 
   meta_data = [
     ['Salg sidste måned', { content: number_to_currency(@sales_last_month),        align: :right}],
     ['Kontant',           { content: number_to_currency(@last_month_meta[:cash]),  align: :right}],
     ['Svind',             { content: number_to_currency(@last_month_meta[:loss]),  align: :right}],
     ['Ølbeholdning',      { content: number_to_currency(@last_month_meta[:stock]), align: :right}],
-    ['Penge i alt',       { content: number_to_currency(total_balance + @last_month_meta[:stock] + @last_month_meta[:cash]), align: :right}]
+    ['Penge i alt',       { content: number_to_currency(@total_money), align: :right}]
   ]
 
   pdf.move_up 30
