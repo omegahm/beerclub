@@ -6,6 +6,6 @@ file '../app/models/payment.rb'
 file '../app/models/bill.rb'
 file '../app/models/product.rb'
 
-gem 'pg'
+gem 'mysql2'
 gem 'activerecord'
 gem 'atomic'

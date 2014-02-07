@@ -1,5 +1,5 @@
 require 'active_record'
-require 'pg'
+require 'mysql2'
 
 require './payment'
 require './product'
