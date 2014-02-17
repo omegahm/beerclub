@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     @total_balance = (@balances.map(&:second).compact.reduce(:+) || 0.0) + @total_paid
     @total_money   = @total_balance + @last_month_meta[:stock] + @last_month_meta[:cash]
 
-    @products_data = @products.reduce([]) { |a, e| arr << [e.name, { content: view_context.number_to_currency(e.price), align: :right }] }
+    @products_data = @products.reduce([]) { |a, e| a << [e.name, { content: view_context.number_to_currency(e.price), align: :right }] }
   end
 
   # GET /graph/:id
