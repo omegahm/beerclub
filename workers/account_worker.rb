@@ -29,7 +29,7 @@ params[:account].each do |line|
   next if hash.key?(:quantity) && hash[:quantity].blank?
   next unless product_id == Payment::ID || product_prices[product_id].present?
 
-  logger.info "Running #{user_id}, #{product_id}"
+  # logger.info "Running #{user_id}, #{product_id}"
 
   # Payments have a special ID
   if product_id == 0

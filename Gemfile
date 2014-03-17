@@ -16,6 +16,7 @@ gem 'highcharts-rails'
 gem 'iron_worker_ng'
 gem 'jquery-rails'
 gem 'memcachier'
+gem 'mysql2'
 gem 'newrelic_rpm'
 gem 'prawn', '>= 1.0.0.rc2'
 gem 'prawn_rails'
@@ -28,7 +29,6 @@ gem 'unicorn-rails'
 gem 'yui-compressor'
 
 group :production do
-  gem 'mysql2'
   gem 'rails_12factor' # required by Heroku
 end
 
