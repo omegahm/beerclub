@@ -6,7 +6,7 @@ gem 'rails'
 
 gem 'actionpack-action_caching'
 gem 'asset_sync'
-gem 'authlogic', github: 'binarylogic/authlogic'
+gem 'authlogic', '3.3.0'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'dalli'

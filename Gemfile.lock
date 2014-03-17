@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/binarylogic/authlogic.git
-  revision: 9870375c5659d8802caa072bdae2f02cdd63c4aa
-  specs:
-    authlogic (3.4.0)
-      activerecord (>= 3.2)
-      activesupport (>= 3.2)
-      request_store (~> 1.0.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,6 +36,9 @@ GEM
       fog (>= 1.8.0)
     ast (1.1.0)
     atomic (1.1.15)
+    authlogic (3.3.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -214,7 +208,6 @@ GEM
     rainbow (2.0.0)
     raindrops (0.13.0)
     rake (10.1.1)
-    request_store (1.0.5)
     rest (2.7.1)
       net-http-persistent (>= 2.9.1)
       rest_client (>= 1.7.1)
@@ -322,7 +315,7 @@ DEPENDENCIES
   actionpack-action_caching
   annotate
   asset_sync
-  authlogic!
+  authlogic (= 3.3.0)
   better_errors
   binding_of_caller
   bootstrap-sass
