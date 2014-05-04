@@ -25,9 +25,9 @@ gem 'rails-i18n'
 gem 'rollbar'
 gem 'sass-rails'
 gem 'scrypt'
+gem 'thin'
 gem 'uglifier'
 gem 'unf'
-gem 'unicorn-rails'
 gem 'yui-compressor'
 
 group :production do
@@ -50,7 +50,6 @@ group :development do
   gem 'pry'
   gem 'quiet_assets'
   gem 'rubocop'
-  gem 'thin'
 end
 
 group :test do
