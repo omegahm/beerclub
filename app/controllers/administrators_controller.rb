@@ -4,7 +4,7 @@ class AdministratorsController < ApplicationController
 
   # GET /administrators
   def index
-    @administrators = Administrator.all
+    @administrators = Administrator.select(:id, :username)
   end
 
   # GET /administrators/new

@@ -1,19 +1,13 @@
 FactoryGirl.define do
   factory :administrator do
-    sequence :username do |n|
-      "admin#{n}"
-    end
+    sequence(:username) { |n| "admin#{n}#{Random.rand(100)}" }
     password 'secret'
     password_confirmation 'secret'
   end
 
   factory :user do
-    sequence :name do |n|
-      "user#{n}"
-    end
-    sequence :room do |n|
-      "#{n}"
-    end
+    sequence(:name) { |n| "user#{n}" }
+    sequence(:room) { |n| "#{n}" }
     visible true
   end
 
@@ -24,9 +18,7 @@ FactoryGirl.define do
   end
 
   factory :product do
-    sequence :name do |n|
-      "Beer#{n}"
-    end
+    sequence(:name) { |n| "Beer#{n}" }
     price 5.0
   end
 

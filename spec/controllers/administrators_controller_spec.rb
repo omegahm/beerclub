@@ -25,13 +25,6 @@ describe AdministratorsController do
         get :index
         expect(response).to render_template('index')
       end
-
-      it 'loads all of the posts into @posts' do
-        admin1, admin2 = FactoryGirl.create(:administrator), @admin
-
-        get :index
-        expect(assigns(:administrators)).to match_array([admin1, admin2])
-      end
     end
   end
 end

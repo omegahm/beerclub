@@ -22,7 +22,6 @@ class HomeController < ApplicationController
   # GET /graph/:id
   def graph
     @product_counts, @bills, @dates = products_bills_and_dates
-
     @user_meta = Hash[User.all.select(:id, :name, :visible).map { |u| [u.id, [u.name, u.visible]] }]
   end
 
@@ -32,10 +31,8 @@ class HomeController < ApplicationController
     return @product_counts if @product_counts.present?
 
     # Gives [user_id, date] => quantity
-    product_counts = Bill.where('product_id = ?', @product.id)
-                         .group('bills.user_id, EXTRACT(DAY FROM bills.created_at)')
-                         .order('EXTRACT(DAY FROM bills.created_at)')
-                         .sum('quantity')
+    product_counts = Bill.select(:id, :user_id, :created_at, :quantity)
+                         .where(product_id: @product.id)
 
     convert_product_counts(product_counts)
   end
@@ -45,12 +42,13 @@ class HomeController < ApplicationController
     bills, dates = {}, []
 
     product_counts.find_each do |product_count|
-      user_id, date = product_count.first
-      quanity       = product_count.second
+      user_id = product_count.user_id
+      date    = product_count.created_at.to_date
+      quanity = product_count.quantity
 
       dates << date
       bills[user_id] ||= {}
-      bills[user_id][Date.parse(date.inspect).to_s] = quanity
+      bills[user_id][date] = quanity
     end
 
     [product_counts, bills, dates.uniq]
