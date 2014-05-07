@@ -76,7 +76,7 @@
                 visible: <%= @user_meta[user_id].second -%>,
                 <%- sum ||= 0 -%>
                 data: [<%- @dates.each do |date| -%>
-                  <%- sum += bill[date] || 0 -%>
+                  <%- sum += bill[Date.parse(date.inspect).to_s] || 0 -%>
                   <%= sum == 0 ? 'null' : sum -%>
                   <%= "," unless @dates.last == date -%>
                 <%- end -%>]
