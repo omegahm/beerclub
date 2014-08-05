@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.1'
 
-gem 'rails'
+gem 'rails', '4.0.4'
 
 gem 'actionpack-action_caching'
 gem 'asset_sync'
@@ -16,7 +16,7 @@ gem 'highcharts-rails'
 gem 'iron_worker_ng'
 gem 'jquery-rails'
 gem 'memcachier'
-gem 'mysql2'
+gem 'mysql2', '0.3.15'
 gem 'newrelic_rpm'
 gem 'prawn', '>= 1.0.0.rc2'
 gem 'prawn_rails'
