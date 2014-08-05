@@ -58,5 +58,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails', require: false
   gem 'fuubar'
-  gem 'rspec-rails', '~> 2.99'
+  gem 'rspec-rails'
 end
