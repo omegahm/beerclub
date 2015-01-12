@@ -14,8 +14,11 @@ class AccountsController < ApplicationController
   def update
     worker = create_worker(params)
 
-    worker.queue if Rails.env.production?
-    worker.run_local unless Rails.env.production?
+    if Rails.env.production?
+      worker.queue
+    else
+      worker.run_local
+    end
 
     flash[:notice] = 'Regnskab opdateret'
     respond_to do |format|
@@ -29,7 +32,11 @@ class AccountsController < ApplicationController
   def create_worker(params)
     # Create worker and assign values
     worker = IronWorkerNG::Client.new
-    worker.tasks.create('account', account: params[:account], database: Rails.configuration.database_configuration[Rails.env])
+
+    worker.tasks.create 'account',
+                        account: params[:account],
+                        database: ENV['DATABASE_URL']
+
     worker
   end
 end

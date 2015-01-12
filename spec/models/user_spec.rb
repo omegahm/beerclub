@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe User do
+RSpec.describe User do
   it 'orders by room' do
     @user1 = FactoryGirl.create(:user, room: '410')
     @user2 = FactoryGirl.create(:user, room: '401')
@@ -9,12 +9,13 @@ describe User do
     @user5 = FactoryGirl.create(:user, room: '202')
     @user6 = FactoryGirl.create(:user, room: '1501')
 
-    User.order_by_room.map(&:room).should == %w(401 410 202 1501 x410 Buddy)
+    expect(User.order_by_room.map(&:room))
+      .to eq(%w(401 410 202 1501 x410 Buddy))
   end
 
   it 'should create deposit' do
     @user1 = FactoryGirl.create(:user, room: '410')
-    @user1.payments.sum(:amount).should == -50.0
+    expect(@user1.payments.sum(:amount)).to eq(-50.0)
   end
 end
 

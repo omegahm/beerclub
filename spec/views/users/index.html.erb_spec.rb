@@ -1,15 +1,15 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'users/index' do
+RSpec.describe 'users/index' do
   before(:each) do
     assign(:users, [
-      stub_model(User,
-                 name: 'Name',
-                 room: 'Room'
+      FactoryGirl.create(:user,
+                         name: 'Name',
+                         room: 'Room'
       ),
-      stub_model(User,
-                 name: 'Name',
-                 room: 'Room'
+      FactoryGirl.create(:user,
+                         name: 'Name',
+                         room: 'Room'
       )
     ])
   end

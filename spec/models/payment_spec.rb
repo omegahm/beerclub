@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Payment do
+RSpec.describe Payment do
   # Left empty
 end
 

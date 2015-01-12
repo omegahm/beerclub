@@ -1,10 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'products/index' do
+RSpec.describe 'products/index' do
   before(:each) do
     assign(:products, [
-      stub_model(Product),
-      stub_model(Product)
+      FactoryGirl.create(:product),
+      FactoryGirl.create(:product)
     ])
   end
 

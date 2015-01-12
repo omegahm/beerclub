@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe HomeController do
+RSpec.describe HomeController do
   before do
     @user1 = FactoryGirl.create(:user)
     @user2 = FactoryGirl.create(:user)
@@ -14,12 +14,12 @@ describe HomeController do
   describe 'GET index' do
     it 'assigns all users' do
       get :index
-      assigns(:users).should eq([@user1, @user2, @user3])
+      expect(assigns(:users)).to eq([@user1, @user2, @user3])
     end
 
     it 'assigns all products' do
       get :index
-      assigns(:products).should eq([@product1, @product2, @product3])
+      expect(assigns(:products)).to eq([@product1, @product2, @product3])
     end
   end
 
@@ -29,13 +29,13 @@ describe HomeController do
   describe 'GET account' do
     it 'renders' do
       get :account, format: :pdf
-      response.should render_template('account')
+      expect(response).to render_template('account')
     end
 
     it 'assigns only visible users and products' do
       get :account, format: :pdf
-      assigns(:users).should eq([@user1, @user2])
-      assigns(:products).should eq([@product1, @product2])
+      expect(assigns(:users)).to eq([@user1, @user2])
+      expect(assigns(:products)).to eq([@product1, @product2])
     end
   end
 end

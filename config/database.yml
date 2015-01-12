@@ -1,17 +1,20 @@
-common: &COMMON
+mysql: &MYSQL
+  adapter: mysql2
+  encoding: utf8
+
+postgres: &POSTGRES
   adapter: postgresql
   encoding: utf-8
   pool: 5
   username: beerclub
 
 production:
-  <<: *COMMON
+  <<: *MYSQL
 
 development:
-  <<: *COMMON
+  <<: *POSTGRES
   database: beerclub_development
 
 test:
-  <<: *COMMON
+  <<: *POSTGRES
   database: beerclub_test
-  username: postgres

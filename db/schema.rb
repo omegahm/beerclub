@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140122202613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "administrators", force: true do |t|
+  create_table "administrators", force: :cascade do |t|
     t.string   "username"
     t.string   "crypted_password"
     t.string   "password_salt"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140122202613) do
     t.datetime "updated_at"
   end
 
-  create_table "bills", force: true do |t|
+  create_table "bills", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "product_id"
     t.float    "price"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140122202613) do
   add_index "bills", ["product_id"], name: "index_bills_on_product_id", using: :btree
   add_index "bills", ["user_id"], name: "index_bills_on_user_id", using: :btree
 
-  create_table "meta", force: true do |t|
+  create_table "meta", force: :cascade do |t|
     t.float    "cash"
     t.float    "loss"
     t.float    "stock"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140122202613) do
     t.datetime "updated_at"
   end
 
-  create_table "payments", force: true do |t|
+  create_table "payments", force: :cascade do |t|
     t.integer  "user_id"
     t.float    "amount"
     t.datetime "created_at"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140122202613) do
 
   add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
     t.boolean  "visible",    default: true
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20140122202613) do
   add_index "products", ["name"], name: "index_products_on_name", using: :btree
   add_index "products", ["visible"], name: "index_products_on_visible", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "room"
     t.datetime "created_at"

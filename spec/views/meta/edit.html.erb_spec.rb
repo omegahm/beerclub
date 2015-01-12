@@ -1,13 +1,14 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'meta/edit' do
+RSpec.describe 'meta/edit' do
+
+
   before(:each) do
-    @metum = assign(:metum, stub_model(Metum,
-                                       cash: 1.5,
-                                       loss: 1.5,
-                                       stock: 1.5,
-                                       created_at: Date.today
-    ))
+    @metum = assign(:metum, FactoryGirl.create(:metum,
+                                               cash: 1.5,
+                                               loss: 1.5,
+                                               stock: 1.5,
+                                               created_at: Date.today))
   end
 
   it 'renders the edit metum form' do

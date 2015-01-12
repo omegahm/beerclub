@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'products/new' do
+RSpec.describe 'products/new' do
   before(:each) do
-    assign(:product, stub_model(Product).as_new_record)
+    assign(:product, FactoryGirl.build(:product, id: nil))
   end
 
   it 'renders new product form' do

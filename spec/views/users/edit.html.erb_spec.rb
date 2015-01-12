@@ -1,10 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'users/edit' do
+RSpec.describe 'users/edit' do
   before(:each) do
-    @user = assign(:user, stub_model(User,
-                                     name: 'MyString',
-                                     room: 'MyString'
+    @user = assign(:user, FactoryGirl.create(:user,
+                                             name: 'MyString',
+                                             room: 'MyString'
     ))
   end
 

@@ -28,7 +28,7 @@ module Beerclub
     config.assets.version = '1.0'
 
     # Needs to be false on Heroku
-    config.serve_static_assets = false
+    config.serve_static_files = true
     config.static_cache_control = 'public, max-age=31536000'
 
     # Add the fonts path

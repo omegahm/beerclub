@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'products/edit' do
+RSpec.describe 'products/edit' do
   before(:each) do
-    @product = assign(:product, stub_model(Product))
+    @product = assign(:product, FactoryGirl.create(:product))
   end
 
   it 'renders the edit product form' do

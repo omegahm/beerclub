@@ -1,12 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'meta/new' do
+RSpec.describe 'meta/new' do
   before(:each) do
-    assign(:metum, stub_model(Metum,
-                              cash: 1.5,
-                              loss: 1.5,
-                              stock: 1.5
-    ).as_new_record)
+    assign(:metum, FactoryGirl.build(:metum,
+                                     id: nil,
+                                     cash: 1.5,
+                                     loss: 1.5,
+                                     stock: 1.5
+    ))
   end
 
   it 'renders new metum form' do

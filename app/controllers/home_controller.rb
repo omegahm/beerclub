@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   before_filter :set_product, only: [:graph]
   before_action :load_data, only: [:index, :account]
-  caches_action :graph, expires_in: 1.day
 
   # GET /
   def index
@@ -12,7 +11,7 @@ class HomeController < ApplicationController
     @users    = @users.visible
     @products = @products.visible
 
-    @total_paid    = @payments.map(&:second).reduce(:+)
+    @total_paid    = @payments.map(&:second).reduce(:+) || 0.0
     @total_balance = (@balances.map(&:second).compact.reduce(:+) || 0.0) + @total_paid
     @total_money   = @total_balance + @last_month_meta[:stock] + @last_month_meta[:cash]
 

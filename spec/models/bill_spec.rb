@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Bill do
+RSpec.describe Bill do
   # Left empty
 end
 

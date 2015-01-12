@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe MetaController do
+RSpec.describe MetaController do
 
   # This should return the minimal set of attributes required to create a valid
   # Metum. As you add validations to Metum, be sure to
@@ -29,14 +29,14 @@ describe MetaController do
       it 'assigns all meta as @meta' do
         metum = Metum.create! valid_attributes
         get :index, {}, valid_session
-        assigns(:meta).should eq([metum])
+        expect(assigns(:meta)).to eq([metum])
       end
     end
 
     describe 'GET new' do
       it 'assigns a new metum as @metum' do
         get :new, {}, valid_session
-        assigns(:metum).should be_a_new(Metum)
+        expect(assigns(:metum)).to be_a_new(Metum)
       end
     end
 
@@ -44,7 +44,7 @@ describe MetaController do
       it 'assigns the requested metum as @metum' do
         metum = Metum.create! valid_attributes
         get :edit, { id: metum.to_param }, valid_session
-        assigns(:metum).should eq(metum)
+        expect(assigns(:metum)).to eq(metum)
       end
     end
 
@@ -58,29 +58,35 @@ describe MetaController do
 
         it 'assigns a newly created metum as @metum' do
           post :create, { metum: valid_attributes }, valid_session
-          assigns(:metum).should be_a(Metum)
-          assigns(:metum).should be_persisted
+          expect(assigns(:metum)).to be_a(Metum)
+          expect(assigns(:metum)).to be_persisted
         end
 
         it 'redirects to index' do
           post :create, { metum: valid_attributes }, valid_session
-          response.should redirect_to(meta_path)
+          expect(response).to redirect_to(meta_path)
         end
       end
 
       describe 'with invalid params' do
         it 'assigns a newly created but unsaved metum as @metum' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Metum.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Metum)
+            .to receive(:save)
+            .and_return(false)
+
           post :create, { metum: { 'cash' => 'invalid value' } }, valid_session
-          assigns(:metum).should be_a_new(Metum)
+          expect(assigns(:metum)).to be_a_new(Metum)
         end
 
         it "re-renders the 'new' template" do
           # Trigger the behavior that occurs when invalid params are submitted
-          Metum.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Metum)
+            .to receive(:save)
+            .and_return(false)
+
           post :create, { metum: { 'cash' => 'invalid value' } }, valid_session
-          response.should render_template('new')
+          expect(response).to render_template('new')
         end
       end
     end
@@ -93,20 +99,22 @@ describe MetaController do
           # specifies that the Metum created on the previous line
           # receives the :update_attributes message with whatever params are
           # submitted in the request.
-          Metum.any_instance.should_receive(:update).with('cash' => '1.5')
+          expect_any_instance_of(Metum)
+            .to receive(:update)
+            .with('cash' => '1.5')
           put :update, { id: metum.to_param, metum: { 'cash' => '1.5' } }, valid_session
         end
 
         it 'assigns the requested metum as @metum' do
           metum = Metum.create! valid_attributes
           put :update, { id: metum.to_param, metum: valid_attributes }, valid_session
-          assigns(:metum).should eq(metum)
+          expect(assigns(:metum)).to eq(metum)
         end
 
         it 'redirects index' do
           metum = Metum.create! valid_attributes
           put :update, { id: metum.to_param, metum: valid_attributes }, valid_session
-          response.should redirect_to(meta_path)
+          expect(response).to redirect_to(meta_path)
         end
       end
 
@@ -114,17 +122,23 @@ describe MetaController do
         it 'assigns the metum as @metum' do
           metum = Metum.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
-          Metum.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Metum)
+            .to receive(:save)
+            .and_return(false)
+
           put :update, { id: metum.to_param, metum: { 'cash' => 'invalid value' } }, valid_session
-          assigns(:metum).should eq(metum)
+          expect(assigns(:metum)).to eq(metum)
         end
 
         it "re-renders the 'edit' template" do
           metum = Metum.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
-          Metum.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Metum)
+            .to receive(:save)
+            .and_return(false)
+
           put :update, { id: metum.to_param, metum: { 'cash' => 'invalid value' } }, valid_session
-          response.should render_template('edit')
+          expect(response).to render_template('edit')
         end
       end
     end
@@ -140,7 +154,7 @@ describe MetaController do
       it 'redirects to the meta list' do
         metum = Metum.create! valid_attributes
         delete :destroy, { id: metum.to_param }, valid_session
-        response.should redirect_to(meta_url)
+        expect(response).to redirect_to(meta_url)
       end
     end
   end
