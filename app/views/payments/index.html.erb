@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1>
+    Indbetalinger
+  </h1>
+</div>
+
+<table class="table table-condensed table-bordered table-striped table-home">
+  <thead>
+    <tr>
+      <th>
+        Navn
+        <span class="pull-right label label-success">
+          <a class="show-old-users fa fa-eye"></a>
+          <a class="hide-old-users fa fa-eye-slash hide"></a>
+        </span>
+      </th>
+      <th>Værelse</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr<%= user.visible? ? '' : ' class="old-user"'.html_safe -%>>
+        <td>
+          <%= user.name %>
+        </td>
+        <td><%= user.room %></td>
+        <td class="text-right">
+          <%= number_to_colored_currency (@payments[user.id].presence || 0) %>
+          <%= link_to payment_path(user.id), class: 'btn btn-xs btn-primary' do %>
+            <i class="fa fa-money"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

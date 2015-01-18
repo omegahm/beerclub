@@ -3,6 +3,7 @@ Beerclub::Application.routes.draw do
 
   resources :users
   resources :products
+  resources :payments, only: [:index, :show]
 
   get 'accounts' => 'accounts#index'
   patch 'accounts' => 'accounts#update', as: :update_accounts

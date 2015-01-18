@@ -1,0 +1,20 @@
+<p>
+  <%= @user.name %> (<%= @user.room %>) har i alt betalt: <%= number_to_colored_currency @payments.map(&:amount).sum %> siden <%= l @payments.first.created_at, format: :short %>.
+</p>
+
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Dato</th>
+      <th>Beløb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= l payment.created_at, format: :short %></td>
+        <td><%= payment.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
