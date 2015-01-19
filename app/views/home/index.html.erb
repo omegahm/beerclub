@@ -45,7 +45,12 @@
             <%= number_with_delimiter (@quantities[[user.id, product.id]].presence || 0) %>
           </td>
         <% end %>
-        <td class="text-right"><%= number_to_colored_currency (@payments[user.id].presence || 0) %></td>
+        <td class="text-right">
+          <%= number_to_colored_currency (@payments[user.id].presence || 0) %>
+          <%= link_to payment_path(user.id), class: 'btn btn-xs btn-primary' do %>
+            <i class="fa fa-money"></i>
+          <% end %>
+        </td>
         <td class="text-right"><%= number_to_colored_currency ((@balances[user.id].presence || 0) + (@payments[user.id].presence || 0)) %></td>
       </tr>
     <% end %>
