@@ -86,7 +86,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
     ['Kontant',           { content: number_to_currency(@last_month_meta[:cash]),  align: :right}],
     ['Svind',             { content: number_to_currency(@last_month_meta[:loss]),  align: :right}],
     ['Ølbeholdning',      { content: number_to_currency(@last_month_meta[:stock]), align: :right}],
-    ['Penge i alt',       { content: number_to_currency(@total_money), align: :right}]
+    ['Penge i alt',       { content: number_to_currency(@total_money),             align: :right}]
   ]
 
   pdf.move_up 30
@@ -95,7 +95,9 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
   pdf.text 'Husk at skrive værelsesnummer på, når I betaler', align: :center
   pdf.move_down 5
   pdf.text I18n.l(DateTime.current, format: :long).capitalize, align: :center
+  pdf.move_down 5
+  pdf.text 'http://kk400.herokuapp.com/', align: :center
 
-  pdf.move_up 60
+  pdf.move_up 70
   pdf.table meta_data, position: :right, cell_style: { height: 12, padding: [0, 5, 0, 5] }
 end
