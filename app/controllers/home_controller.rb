@@ -57,7 +57,7 @@ class HomeController < ApplicationController
     @users    = User.order_by_room
     @products = Product.order(:created_at)
 
-    @payments   = Payment.group(:user_id).sum(:amount)
+    @payments = Payment.group(:user_id).sum(:amount)
 
     @quantities, @balances = quantites_balances
     set_totals(@products, @quantities)
@@ -65,6 +65,8 @@ class HomeController < ApplicationController
     @sales_last_month = sales_last_month
     @last_month_meta  = Metum.last_month
     @last_bill        = Bill.last.try(&:created_at) || Date.today
+
+    @settings = Setting.to_hash
   end
 
   def sales_last_month

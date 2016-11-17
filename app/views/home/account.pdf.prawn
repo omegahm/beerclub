@@ -91,7 +91,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
 
   pdf.move_up 30
   pdf.text 'Bankkonto:', align: :center
-  pdf.text 'Reg nr.: 2403 Konto nr.: 4381 563 672', align: :center
+  pdf.text "Reg nr.: #{@settings[:reg_no]} Konto nr.: #{@settings[:account_no]}", align: :center
   pdf.text 'Husk at skrive værelsesnummer på, når I betaler', align: :center
   pdf.move_down 5
   pdf.text I18n.l(DateTime.current, format: :long).capitalize, align: :center

@@ -2,6 +2,7 @@ Beerclub::Application.routes.draw do
   resources :meta
 
   resources :users
+  resources :settings
   resources :products
   resources :payments, only: [:index, :show]
 

@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1><%= fa_icon 'cog', text: 'Indstillinger' %></h1>
+</div>
+
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @settings.each do |setting| %>
+      <tr>
+        <td><%= setting.key %></td>
+        <td><%= setting.value %></td>
+        <td class="text-center">
+          <%= link_to edit_setting_path(setting), class: 'btn btn-warning btn-xs' do %>
+            <%= fa_icon 'edit', text: 'Rediger' %>
+          <% end %>
+        </td>
+        <td class="text-center">
+          <%= link_to setting, method: :delete, data: { confirm: 'Er du sikker?' }, class: 'btn btn-danger btn-xs' do %>
+            <%= fa_icon 'flash', text: 'Slet' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ny indstilling', new_setting_path, class: 'btn btn-link' %>

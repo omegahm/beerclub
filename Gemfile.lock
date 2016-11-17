@@ -328,3 +328,9 @@ DEPENDENCIES
   sass-rails
   scrypt
   unicorn-rails
+
+RUBY VERSION
+   ruby 2.2.0p0
+
+BUNDLED WITH
+   1.13.6
