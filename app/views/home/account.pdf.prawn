@@ -17,7 +17,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
              { content: 'Værelse', width: 50 }
            ] +
 
-           @products.map {|p| { content: p.name, width: p.width.presence || 130 } } +
+           @products.map { |p| { content: p.name, width: p.width.presence || 130 } } +
 
            [
              { content: 'Indbetalt' },
@@ -40,7 +40,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
 
     # Balance
     num = (@balances[user.id].presence || 0) + (@payments[user.id].presence || 0)
-    user_data << { content: number_to_currency(num), align: :right, text_color: (num > 0 ? '00CC00' : 'CC0000') }
+    user_data << { content: number_to_currency(num), align: :right, text_color: (num > 0 ? '00cc00' : 'cc0000') }
 
     data << user_data
   end
@@ -69,7 +69,7 @@ prawn_document(page_layout: :landscape, page_size: 'A4') do |pdf|
     # Alternating colors
     cells.style do |c|
       if c.row == 0
-        c.background_color = 'F0AD4E'
+        c.background_color = 'f0ad4e'
       elsif c.row % 2 == 0
         c.background_color = 'e9e9e9'
       else
